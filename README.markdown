@@ -13,3 +13,15 @@ you have open.
 ## Screenshot
 
 ![screenshot](http://f.cl.ly/items/1A1O1Z3S100n0m3b1H0A/responsive-twitter.png)
+
+## Installation
+
+I haven't dropped this in the Chrome store because I'm not that
+proud of it yet. So, for those that don't know how to load an unpacked
+extension:
+
+  1. Clone this repo
+  2. Go to Extensions in Google Chrome settings
+  3. Check **Developer Mode** in the top right corner
+  4. Click **Load unpacked extension**
+  5. Select the path of the extension files
