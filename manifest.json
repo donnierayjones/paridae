@@ -1,0 +1,16 @@
+{
+  "name": "Responsive Twitter",
+  "version": "0.1",
+  "description": "Make twitter.com more responsive",
+  "background_page": "background.html",
+  "content_scripts": [
+    {
+      "matches": ["https://twitter.com/*"],
+      "css": ["styles.css"],
+      "js": ["jquery.js", "script.js"]
+    }
+  ],
+  "permissions": [
+    "tabs"
+  ]
+}

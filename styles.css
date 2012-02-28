@@ -1,0 +1,62 @@
+@media screen and (max-width: 865px) {
+  .dashboard {
+    display: none !important;
+  }
+
+  .topbar {
+    position: static !important;
+  }
+
+  .content-main {
+    float: none !important;
+    width: 100% !important;
+    min-width: 408px !important;
+  }
+
+  .global-nav .container {
+    width: 100% !important;
+    min-width: 408px !important;
+  }
+
+  .wrapper {
+    width: 96% !important;
+    padding: 15px 2% 15px !important;
+  }
+
+  #retweet-dialog, .header-module .search-header, .tweet-row, div.tweet-media *, .original-tweet div.tweet-media iframe {
+    width: 100% !important;
+  }
+
+  .global-nav .search-input, .global-nav .search-input:focus, .global-nav .search-input.focus, .global-nav .highlight .search-input, .global-nav .dwrli .search-input {
+    width: 75px !important;
+  }
+
+  .profile-card-actions {
+    float: left !important;
+  }
+
+  #tweet_dialog {
+    width: 90% !important;
+  }
+
+  #tweet_dialog textarea {
+    width: 95% !important;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .nav > li > a {
+    padding-left: 10px !important;
+    width: 20px !important;
+    white-space: nowrap !important;
+    overflow:hidden !important;
+  }
+
+  .nav > li > a .new-wrapper {
+    padding-right: 10px !important;
+  }
+
+  .larry-topbar {
+    left: 35% !important;
+  }
+}
