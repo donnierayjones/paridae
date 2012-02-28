@@ -9,3 +9,7 @@ less than the default width.
 
 It also opens links in a new tab on the "largest" Google Chrome window
 you have open.
+
+## Screenshot
+
+![screenshot](http://f.cl.ly/items/1A1O1Z3S100n0m3b1H0A/responsive-twitter.png)
