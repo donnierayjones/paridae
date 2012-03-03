@@ -10,9 +10,15 @@ less than the default width.
 It also opens links in a new tab on the "largest" Google Chrome window
 you have open.
 
-## Screenshot
+## Screenshots
 
-![screenshot](http://f.cl.ly/items/1A1O1Z3S100n0m3b1H0A/responsive-twitter.png)
+### Chrome-less window with just the content:
+
+![chrome-less](http://f.cl.ly/items/1T182T3b2K1I1E1b0h3c/responsive-twitter-2.png)
+
+### Icon / button to launch twitter window:
+
+![icon](http://f.cl.ly/items/140D1K0z2b2p2y0C1x20/responsive-twitter-icon.png)
 
 ## Installation
 
