@@ -10,17 +10,24 @@
   .content-main {
     float: none !important;
     width: 100% !important;
-    min-width: 408px !important;
+
+  }
+
+  .content-main * {
+    border-radius: 0 !important;
   }
 
   .global-nav .container {
     width: 100% !important;
-    min-width: 408px !important;
   }
 
   .wrapper {
-    width: 96% !important;
-    padding: 15px 2% 15px !important;
+    width: 100% !important;
+    padding: 0 !important;
+  }
+
+  .close-all-tweets {
+    display: none;
   }
 
   #retweet-dialog, .header-module .search-header, .tweet-row, div.tweet-media *, .original-tweet div.tweet-media iframe {
@@ -59,4 +66,22 @@
   .larry-topbar {
     left: 35% !important;
   }
+}
+
+@media screen and (max-width: 408px) {
+  body {
+    font-size: 0.8em !important;
+  }
+  .topbar {
+    display: none !important;
+  }
+  .actions {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 308px) {
+  .avatar { display: none !important; }
+  .content { margin-left: 0 !important; }
+  .replies .tweet { padding: 9px !important; }
 }
