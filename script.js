@@ -4,4 +4,7 @@ $(document).ready(function() {
     var $link = $(this);
     chrome.extension.sendRequest({url: $link.attr('href')});
   });
+
+  // disable jquery animations
+  document.location = 'javascript:$.fx.off=true;';
 });
