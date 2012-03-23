@@ -26,8 +26,11 @@ you have open.
 
 ## Installation
 
-I haven't dropped this in the Chrome store because I'm not that proud of
-it yet. So, for those that don't know how to load an unpacked extension:
+### Install from Google Chrome Web Store
+
+[Responsive Twitter in the Chrome Web Store](https://chrome.google.com/webstore/detail/mlfldkpapihighaigbbaaicpjoddlhhf)
+
+### Install by Loading Unpacked Extension
 
   1. Clone this repo
   2. Go to Extensions in Google Chrome settings
