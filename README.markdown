@@ -1,24 +1,21 @@
 # Make Twitter Responsive
 
-I'm not a fan of Twitter for Mac and I use Windows 8 hours a day at
-work, so I needed something a little more lightweight than the
-twitter.com webapp.
+![promo](http://f.cl.ly/items/3b012S1K060E3I3V3K0j/responsive-twitter-440.png)
 
-This chrome extension makes Twitter fit to your browser window when it's
-less than the default width.
+## Features
 
-It also opens links in a background tab on the "largest" Google Chrome window
-you have open.
+* Shrinks twitter.com to fit in almost any width you give it.
+* Disables jQuery animations so that it will feel quicker.
+* Provides a browser icon/button to open twitter.com in a chrome-less
+  window (i.e. no toolbars) and will remember the window size/position
+  upon closing.
+* Opens clicked links in the background.
+* Removes hover effects when the window is really small. Favors keyboard
+  shortcuts over mouse interaction.
 
 ## Screenshots
 
-### Chrome-less window with just the content:
-
-![chrome-less](http://f.cl.ly/items/2y3q1s2j1j1k2S430W30/responsive-twitter3.png)
-
-### Extra narrow without icons:
-
-![icon-less](http://f.cl.ly/items/0c2v0Q3p0v3o0C3S0X3m/responsive-twitter4.png)
+![screenshot](http://f.cl.ly/items/461A2S0u1L0O0b1T022a/chrome-screen-large.png)
 
 ### Icon / button to launch Twitter window:
 
