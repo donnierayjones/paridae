@@ -11,7 +11,7 @@
 
   /* main components and overlays 100% width */
   .wrapper, .global-nav .container, .twttr-dialog-container, #retweet-dialog,
-  .header-module .search-header, .tweet-row, div.tweet-media *,
+  .header-module .search-header, .tweet-row, div.tweet-media > *,
   .original-tweet div.tweet-media iframe, #tweet_dialog {
     width: 100% !important;
     padding: 0 !important;
