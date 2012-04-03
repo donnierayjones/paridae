@@ -44,7 +44,7 @@
       chrome.tabs.create({
         url: url,
         windowId: window.id,
-        active: false
+        active: true
       });
     });
   };
