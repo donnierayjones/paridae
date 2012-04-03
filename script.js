@@ -18,7 +18,7 @@ $(document).ready(function() {
     if(event.charCode != 111) {
       return;
     }
-    var $current_tweet = $('.hovered-stream-item');
+    var $current_tweet = $('.hovered-stream-item, .js-had-hovered-stream-item');
     if($current_tweet.length > 0) {
       var $links = $('a[target="_blank"]', $current_tweet);
       if($links.length > 0) {
