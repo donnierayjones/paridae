@@ -42,6 +42,11 @@
     width: 95% !important;
   }
 
+  /* hide embedly's extra fluff */
+  .embedly-instapaper, .embedly .media-attribution, .embedly-link {
+    display: none !important;
+  }
+
 }
 
 @media screen and (max-width: 575px) {
