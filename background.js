@@ -38,13 +38,20 @@
     });
   };
 
+  // open a url in a new tab, highlight (or focus it), but keep primary focus
+  // on twitter window
+
   var openNewTabInBestWindow = function(url) {
     chrome.windows.getAll({populate: false /* no tabs */}, function(windows) {
       var window = findBestWindow(windows);
       chrome.tabs.create({
         url: url,
         windowId: window.id,
-        active: true
+        active: false
+      }, function(tab) {
+        chrome.tabs.update(tab.id, {
+          highlighted: true
+        });
       });
     });
   };
