@@ -10,8 +10,11 @@
   window (i.e. no toolbars) and will remember the window size/position
   upon closing.
 * Opens clicked links in the background.
+* Open links with keyboard shortcut `o`.
 * Removes hover effects when the window is really small. Favors keyboard
   shortcuts over mouse interaction.
+* If you use the [Embedly extension][1], it hides the metadata output by
+  Embedly.
 
 ## Screenshots
 
@@ -25,7 +28,7 @@
 
 ### Install from Google Chrome Web Store
 
-[Responsive Twitter in the Chrome Web Store](https://chrome.google.com/webstore/detail/mlfldkpapihighaigbbaaicpjoddlhhf)
+[Responsive Twitter in the Chrome Web Store][2]
 
 ### Install by Loading Unpacked Extension
 
@@ -34,3 +37,6 @@
   3. Check **Developer Mode** in the top right corner
   4. Click **Load unpacked extension**
   5. Select the path of the extension files
+
+[1]: https://chrome.google.com/webstore/detail/ljpehmgoanlmeiiodaincleeiaknmfol
+[2]: https://chrome.google.com/webstore/detail/mlfldkpapihighaigbbaaicpjoddlhhf
