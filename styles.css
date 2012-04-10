@@ -18,6 +18,11 @@
     padding: 0 !important;
   }
 
+  /* media container sets min-height for some reason. remove it. */
+  .js-tweet-media-container {
+    min-height: 0 !important;
+  }
+
   /* rounded corners are so 90's */
   .conent-main, .content-header .header-inner, .stream-items > *, .module,
   .module .flex-module, .stream-end-inner, .stream-loading,
