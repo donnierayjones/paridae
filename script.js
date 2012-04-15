@@ -1,14 +1,24 @@
 $(document).ready(function() {
 
-  var openLink = function(url) {
-    chrome.extension.sendRequest({url: url});
+  var onClickLink = function(url) {
+    chrome.extension.sendRequest({
+      action: 'openLink',
+      url: url
+    });
+  };
+
+  var onBeforeUnload = function() {
+    chrome.extension.sendRequest({
+      action: 'saveDimensions'
+    });
   };
 
   $('body').on('click', 'a[target="_blank"]', function(e) {
     e.preventDefault();
-    var $link = $(this);
-    openLink($link.attr('href'));
+    onClickLink($(this).attr('href'));
   });
+
+  $(window).on('beforeunload', onBeforeUnload);
 
   // disable jquery animations
   document.location = 'javascript:$.fx.off=true;';

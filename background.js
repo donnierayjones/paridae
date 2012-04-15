@@ -39,7 +39,9 @@
   };
 
   // open a url in a new tab, highlight (or focus it), but keep primary focus
-  // on twitter window
+  // on twitter window.
+  // if twitter is open in the same window as the "best" window, then we don't
+  // focus the tab, as that would steal focus from twitter.
 
   var openNewTabInBestWindow = function(url) {
     chrome.windows.getAll({populate: false /* no tabs */}, function(windows) {
@@ -49,8 +51,12 @@
         windowId: window.id,
         active: false
       }, function(tab) {
-        chrome.tabs.update(tab.id, {
-          highlighted: true
+        getExistingTwitterWindow(function(twitter_window) {
+          if(window.id != twitter_window.id) {
+            chrome.tabs.update(tab.id, {
+              highlighted: true
+            });
+          }
         });
       });
     });
@@ -66,20 +72,47 @@
     });
   };
 
-  // handle requests from content script to open links
+  var getExistingTwitterTab = function(callback) {
+    getExistingTwitterWindow(function(twitter_window) {
+      if(twitter_window === undefined) {
+        callback(null);
+      }
+
+      var twitter_tab = _.find(twitter_window.tabs, function(tab) {
+        return tab.url.indexOf('//twitter.com') > 0;
+      });
+      callback(twitter_tab);
+    });
+  };
+
+  var requestHandlers = {
+    openLink: function(request) {
+      openNewTabInBestWindow(request.url);
+    },
+    saveDimensions: function(request) {
+      getExistingTwitterWindow(function(twitter_window) {
+        if(twitter_window.tabs.length == 1) {
+          saveWindowDimensions(twitter_window);
+        }
+      });
+    }
+  };
 
   chrome.extension.onRequest.addListener(function(request) {
-    if (request.url !== undefined) {
-      openNewTabInBestWindow(request.url);
-    }
+    requestHandlers[request.action](request);
   });
 
   // open twitter.com in a (mostly) chrome-less window
 
   chrome.browserAction.onClicked.addListener(function(tab) {
-    getExistingTwitterWindow(function(existingWindow) {
-      if(existingWindow !== undefined) {
-        chrome.windows.update(existingWindow.id, { focused: true });
+    getExistingTwitterWindow(function(existing_window) {
+      if(existing_window !== undefined) {
+        chrome.windows.update(existing_window.id, { focused: true });
+        getExistingTwitterTab(function(twitter_tab) {
+          chrome.tabs.update(twitter_tab.id, {
+            highlighted: true
+          });
+        });
       } else {
         var dimensions = getWindowDimensions();
         var window_options = 'toolbar=no,location=no';
@@ -92,17 +125,7 @@
             ',left=' + dimensions.left;
         }
 
-        window.open(TWITTER_URL, 'winname', window_options);
-
-        // Monitor focus changes to persist window size. The Chrome API does
-        // not offer onResize event, so this is the closest we can get without
-        // a content script sending messages to the extension.
-
-        chrome.windows.onFocusChanged.addListener(function(windowId) {
-          getExistingTwitterWindow(function(twitterWindow) {
-            saveWindowDimensions(twitterWindow);
-          });
-        });
+        window.open(TWITTER_URL, 'twitter', window_options);
       }
     });
   });
