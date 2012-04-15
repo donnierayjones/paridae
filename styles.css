@@ -13,7 +13,7 @@
   .wrapper, .global-nav .container, .twttr-dialog-container,
   .autocomplete-container, #retweet-dialog, .header-module .search-header,
   .tweet-row, div.tweet-media > *, .inline-media-image img, .original-tweet
-  div.tweet-media iframe, #tweet_dialog, .twttr-goto-user-input {
+  div.tweet-media iframe, #tweet_dialog, .twttr-goto-user-input, .search-title {
     width: 100% !important;
     padding: 0 !important;
   }
@@ -38,6 +38,11 @@
   .search-input.focus, .global-nav .highlight .search-input,
   .global-nav .dwrli .search-input {
     width: 75px !important;
+  }
+
+  /* reposition the search icon */
+  #global-nav-search .search-icon {
+    left: 85px !important;
   }
 
   /* profile actions don't fit, put 'em below the profile image */
