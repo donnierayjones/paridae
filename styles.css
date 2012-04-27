@@ -27,7 +27,7 @@
   /* rounded corners are so 90's */
   .conent-main, .content-header .header-inner, .stream-items > *, .module,
   .module .flex-module, .stream-end-inner, .stream-loading,
-  .twttr-dialog-container {
+  .twttr-dialog-container, .permalink-inner {
     border-radius: 0 !important;
   }
 
@@ -59,6 +59,10 @@
     display: none !important;
   }
 
+  /* trim the extra padding on the tweet detail page */
+  .permalink-inner {
+    padding: 1em !important;
+  }
 }
 
 @media screen and (max-width: 575px) {
@@ -88,6 +92,15 @@
   /* avatar row doesn't wrap nicely, so just hide it */
   .avatar-row { display: none !important; }
 
+  /* actions (when wrapped) have a gray artifact bc of background. hide it. */
+  .tweet .actions {
+    background: transparent !important;
+  }
+
+  /* keep actions' text and icons together */
+  .tweet .actions li a {
+    white-space: nowrap;
+  }
 }
 
 @media screen and (max-width: 408px) {
@@ -104,13 +117,15 @@
 
   /* when the action bar won't fit in the width, just hide it */
   .tweet .stream-item-header .actions { display: none !important; }
-
 }
 
 @media screen and (max-width: 308px) {
 
+  /* reduce the font size for this really narrow width */
+  body { font-size: 0.75em !important; }
+
   /* don't show avatar in stream (but show it on profiles) */
-  .stream .avatar { display: none !important; }
+  .stream .avatar, .recent-tweets .avatar { display: none !important; }
 
   /* remove margin since we don't show avatars */
   .content { margin-left: 0 !important; }
