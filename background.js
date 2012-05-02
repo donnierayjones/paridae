@@ -44,18 +44,19 @@
   // focus the tab, as that would steal focus from twitter.
 
   var openNewTabInBestWindow = function(url) {
-    chrome.windows.getAll({populate: false /* no tabs */}, function(windows) {
+    chrome.windows.getAll({populate: true /* get tabs */}, function(windows) {
       var window = findBestWindow(windows);
       chrome.tabs.create({
         url: url,
         windowId: window.id,
         active: false
       }, function(tab) {
-        getExistingTwitterWindow(function(twitter_window) {
-          if(window.id != twitter_window.id) {
-            chrome.tabs.update(tab.id, {
-              highlighted: true
-            });
+        getExistingTwitterTab(function(twitter_tab) {
+          if(window.id != twitter_tab.windowId) {
+            chrome.tabs.highlight({
+              windowId: window.id,
+              tabs: window.tabs.length
+            }, function() {});
           }
         });
       });
