@@ -115,8 +115,9 @@
 
 @media screen and (max-width: 350px) {
 
-  /* when the action bar won't fit in the width, just hide it */
-  .tweet .stream-item-header .actions { display: none !important; }
+  /* hide actions in tweet footer */
+  .tweet .stream-item-footer { display: none; }
+
 }
 
 @media screen and (max-width: 308px) {
@@ -125,7 +126,9 @@
   body { font-size: 0.75em !important; }
 
   /* don't show avatar in stream (but show it on profiles) */
-  .stream .avatar, .recent-tweets .avatar { display: none !important; }
+  .stream .avatar, .tweet .avatar {
+    display: none !important;
+  }
 
   /* remove margin since we don't show avatars */
   .content { margin-left: 0 !important; }
