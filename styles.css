@@ -113,14 +113,10 @@
 
 }
 
-@media screen and (max-width: 350px) {
+@media screen and (max-width: 308px) {
 
   /* hide actions in tweet footer */
   .tweet .stream-item-footer { display: none; }
-
-}
-
-@media screen and (max-width: 308px) {
 
   /* reduce the font size for this really narrow width */
   body { font-size: 0.75em !important; }
