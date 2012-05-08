@@ -41,9 +41,9 @@
     width: 75px !important;
   }
 
-  /* reposition the search icon */
-  #global-nav-search .search-icon {
-    left: 85px !important;
+  /* form that wraps search input needs default width */
+  .global-nav .form-search {
+    width: auto !important;
   }
 
   /* profile actions don't fit, put 'em below the profile image */
@@ -115,8 +115,11 @@
 
 @media screen and (max-width: 308px) {
 
-  /* hide actions in tweet footer */
+  /* hide actions in tweet footer ... */
   .tweet .stream-item-footer { display: none; }
+
+  /* ... but show them when expanded */
+  .opened-tweet .stream-item-footer { display: block; }
 
   /* reduce the font size for this really narrow width */
   body { font-size: 0.75em !important; }
