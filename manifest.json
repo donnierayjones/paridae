@@ -1,6 +1,6 @@
 {
   "name": "Responsive Twitter",
-  "version": "0.4",
+  "version": "0.5",
   "description": "Make twitter.com more responsive",
   "background_page": "background.html",
   "content_scripts": [
