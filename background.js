@@ -6,6 +6,8 @@
   var STOR_TOP_KEY = 'window_top';
   var STOR_LEFT_KEY = 'window_left';
 
+  var existing_twitter_window;
+
   var saveWindowDimensions = function(w) {
     localStorage[STOR_WIDTH_KEY] = w.width.toString(10);
     localStorage[STOR_HEIGHT_KEY] = w.height.toString(10);
@@ -51,38 +53,22 @@
         windowId: window.id,
         active: false
       }, function(tab) {
-        getExistingTwitterTab(function(twitter_tab) {
-          if(window.id != twitter_tab.windowId) {
-            chrome.tabs.highlight({
-              windowId: window.id,
-              tabs: window.tabs.length
-            }, function() {});
-          }
-        });
+        chrome.tabs.highlight({
+          windowId: window.id,
+          tabs: window.tabs.length
+        }, function() {});
       });
     });
   };
 
   var getExistingTwitterWindow = function(callback) {
-    chrome.windows.getAll({populate: true}, function(windows) {
+    if(existing_twitter_window === undefined) {
+      return callback();
+    }
+    chrome.windows.getAll({populate: false /* no tabs */}, function(windows) {
       callback(_.find(windows, function(w) {
-        return _.any(w.tabs, function(t) {
-          return t.url.indexOf('//twitter.com') > 0;
-        });
+        return w.id == existing_twitter_window.id
       }));
-    });
-  };
-
-  var getExistingTwitterTab = function(callback) {
-    getExistingTwitterWindow(function(twitter_window) {
-      if(twitter_window === undefined) {
-        callback(null);
-      }
-
-      var twitter_tab = _.find(twitter_window.tabs, function(tab) {
-        return tab.url.indexOf('//twitter.com') > 0;
-      });
-      callback(twitter_tab);
     });
   };
 
@@ -91,11 +77,7 @@
       openNewTabInBestWindow(request.url);
     },
     saveDimensions: function(request) {
-      getExistingTwitterWindow(function(twitter_window) {
-        if(twitter_window.tabs.length == 1) {
-          saveWindowDimensions(twitter_window);
-        }
-      });
+      saveWindowDimensions(request.dimensions);
     }
   };
 
@@ -109,26 +91,20 @@
     getExistingTwitterWindow(function(existing_window) {
       if(existing_window !== undefined) {
         chrome.windows.update(existing_window.id, { focused: true });
-        getExistingTwitterTab(function(twitter_tab) {
-          chrome.tabs.update(twitter_tab.id, {
-            highlighted: true
-          });
-        });
       } else {
         var dimensions = getWindowDimensions();
-        var window_options = 'toolbar=no,location=no';
-
-        if(dimensions !== undefined) {
-          window_options +=
-            ',width=' + dimensions.width +
-            ',height=' + dimensions.height +
-            ',top=' + dimensions.top +
-            ',left=' + dimensions.left;
-        }
-
-        window.open(TWITTER_URL, 'twitter', window_options);
+        chrome.windows.create({
+          url: TWITTER_URL,
+          focused: true,
+          width: parseInt(dimensions.width, 10),
+          height: parseInt(dimensions.height, 10),
+          top: parseInt(dimensions.top, 10),
+          left: parseInt(dimensions.left, 10),
+          type: 'popup'
+        }, function(new_window) {
+          existing_twitter_window = new_window;
+        });
       }
     });
   });
-
 })();

@@ -1,4 +1,6 @@
-$(document).ready(function() {
+$(function() {
+
+  var isMacOS = navigator.appVersion.indexOf("Mac") > 0;
 
   var onClickLink = function(url) {
     chrome.extension.sendRequest({
@@ -9,7 +11,17 @@ $(document).ready(function() {
 
   var onBeforeUnload = function() {
     chrome.extension.sendRequest({
-      action: 'saveDimensions'
+      action: 'saveDimensions',
+      dimensions: {
+
+        // it appears that innerWidth/Height is accurate for Mac OS,
+        // while outerWidth/Height is accurate for Windows
+        width: isMacOS ? window.innerWidth : window.outerWidth,
+        height: isMacOS ? window.innerHeight : window.outerHeight,
+
+        top: window.screenTop,
+        left: window.screenLeft
+      }
     });
   };
 
@@ -35,7 +47,7 @@ $(document).ready(function() {
         }
       }
     }
-  }
+  };
 
   // handle shortcut keys
   $(document).on('keypress', function(event) {
