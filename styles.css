@@ -1,5 +1,8 @@
 @media screen and (max-width: 865px) {
 
+  /* less than 250px doesnt make much sense */
+  body { min-width: 250px !important; }
+
   /* remove sidebar */
   .dashboard { display: none !important; }
 
@@ -34,11 +37,13 @@
   /* get rid of this button. just hit l instead */
   .close-all-tweets { display: none !important; }
 
-  /* make the ever-expanding search input stay fixed width */
+  /* make the ever-expanding search input stay fixed width, and disable
+     transitions/animations */
   .global-nav .search-input, .global-nav .search-input:focus, .global-nav
   .search-input.focus, .global-nav .highlight .search-input,
   .global-nav .dwrli .search-input {
     width: 75px !important;
+    -webkit-transition: none !important;
   }
 
   /* form that wraps search input needs default width */
@@ -108,9 +113,23 @@
   /* reduce the font size for this really narrow width */
   body { font-size: 0.8em !important; }
 
-  /* remove the topbar / nav. keyboard shortcuts are our friend */
-  .topbar { display: none !important; }
-
+  /* only show search and compose tweet button. keyboard shortcuts FTW */
+  .topbar .nav, .larry-topbar, .topbar i.nav-search, .topbar-divider,
+  .form-search .dropdown-menu {
+    display: none !important;
+  }
+  .topbar .pull-right {
+    float: left !important;
+    width: 100% !important;
+  }
+  .topbar .form-search {
+    position: static !important;
+  }
+  .topbar .search-input, .topbar .search-input.focus {
+    width: 55% !important;
+    left: 7px !important;
+    top: 7px !important;
+  }
 }
 
 @media screen and (max-width: 308px) {
@@ -125,7 +144,7 @@
   body { font-size: 0.75em !important; }
 
   /* don't show avatar in stream (but show it on profiles) */
-  .stream .avatar, .tweet .avatar {
+  .stream .avatar, .tweet .avatar, .dropdown-menu .avatar {
     display: none !important;
   }
 
