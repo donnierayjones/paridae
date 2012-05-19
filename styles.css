@@ -3,6 +3,11 @@
   /* less than 250px doesnt make much sense */
   body { min-width: 250px !important; }
 
+  /* remove margin between header and content */
+  .module {
+    margin-bottom: 0 !important;
+  }
+
   /* remove sidebar */
   .dashboard { display: none !important; }
 
@@ -90,6 +95,24 @@
   /* make larry (the twitter bird) move with the width */
   .larry-topbar { left: 35% !important; }
 
+  /* profile modal fixes */
+  .profile-modal-header {
+    height: auto !important;
+  }
+  .profile-card .avatar {
+    width: 48px !important;
+    height: 48px !important;
+  }
+  .profile-card .fullname {
+    font-size: 1.5em !important;
+  }
+  .profile-card-inner {
+    width: 70% !important;
+  }
+  .profile-card-actions {
+    margin-top: 1em !important;
+    width: 100% !important;
+  }
 }
 
 @media screen and (max-width: 450px) {
@@ -137,6 +160,11 @@
   /* hide actions in tweet footer ... */
   .tweet .stream-item-footer { display: none; }
 
+  /* hide dialog close button. use <esc> instead */
+  .profile-modal .twttr-dialog-close {
+    display: none !important;
+  }
+
   /* ... but show them when expanded */
   .opened-tweet .stream-item-footer { display: block; }
 
@@ -153,5 +181,4 @@
 
   /* shrink margin on replies too, because avatars are removed there too */
   .replies .tweet { padding: 9px !important; } 
-
 }
