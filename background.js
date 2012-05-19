@@ -67,7 +67,7 @@
     }
     chrome.windows.getAll({populate: false /* no tabs */}, function(windows) {
       callback(_.find(windows, function(w) {
-        return w.id == existing_twitter_window.id
+        return w.id == existing_twitter_window.id;
       }));
     });
   };
@@ -77,7 +77,13 @@
       openNewTabInBestWindow(request.url);
     },
     saveDimensions: function(request) {
-      saveWindowDimensions(request.dimensions);
+      // only save if we have the twitter window open
+      // i.e. don't save for a tab in main browser
+      getExistingTwitterWindow(function(w) {
+        if(w !== undefined) {
+          saveWindowDimensions(request.dimensions);
+        }
+      });
     }
   };
 
