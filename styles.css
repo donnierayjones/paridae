@@ -153,6 +153,18 @@
     left: 7px !important;
     top: 7px !important;
   }
+
+  /* give more vertical space for dialogs */
+  .twttr-dialog-container {
+    margin: 25px auto !important;
+  }
+
+  /* make keyboard shortcuts overlay more readable */
+  .keyboard-shortcuts .modal-table {
+    margin-top: 10px !important;
+    margin-left: 0 !important;
+    float: none !important;
+  }
 }
 
 @media screen and (max-width: 308px) {
