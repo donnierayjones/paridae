@@ -16,13 +16,12 @@
 
   /* we don't need to always see the topbar / nav */
   .topbar { position: static !important; }
-
+  
   /* main components and overlays 100% width */
-  .wrapper, .global-nav .container, .twttr-dialog-container,
-  .autocomplete-container, #retweet-dialog, .header-module .search-header,
-  .tweet-row, div.tweet-media > *, .inline-media-image img, .original-tweet
-  div.tweet-media iframe, #tweet_dialog, .twttr-goto-user-input, .search-title,
-  .search-assist-related-queries {
+  .wrapper, .global-nav .container, .autocomplete-container, .header-module
+  .search-header, .tweet-row, div.tweet-media > *, .inline-media-image img,
+  .original-tweet div.tweet-media iframe, .twttr-goto-user-input,
+  .search-title, .search-assist-related-queries {
     width: 100% !important;
     padding: 0 !important;
   }
@@ -34,8 +33,7 @@
 
   /* rounded corners are so 90's */
   .conent-main, .content-header .header-inner, .stream-items > *, .module,
-  .module .flex-module, .stream-end-inner, .stream-loading,
-  .twttr-dialog-container, .permalink-inner {
+  .module .flex-module, .stream-end-inner, .stream-loading, .permalink-inner {
     border-radius: 0 !important;
   }
 
@@ -165,6 +163,165 @@
     margin-left: 0 !important;
     float: none !important;
   }
+
+  /* make dialog/modals fit */
+  .twttr-dialog-container, #retweet-dialog, #tweet_dialog, #profile_popup .modal {
+    width: 100% !important;
+  }
+
+  /* profile popup has a absolute left. remove it. */
+  #profile_popup .modal {
+    left: 0 !important;
+  }
+
+  /* remove border radius from modal/popups */
+  .twttr-dialog-container, .modal-content {
+    -webkit-border-radius: 0 !important;
+    border-radius: 0 !important;
+  }
+
+  /* get rid of this button. just hit l instead */
+  .close-all-tweets { display: none !important; }
+
+  /* make the ever-expanding search input stay fixed width, and disable
+     transitions/animations */
+  .global-nav .search-input, .global-nav .search-input:focus, .global-nav
+  .search-input.focus, .global-nav .highlight .search-input,
+  .global-nav .dwrli .search-input {
+    width: 75px !important;
+    -webkit-transition: none !important;
+  }
+
+  /* form that wraps search input needs default width */
+  .global-nav .form-search {
+    width: auto !important;
+  }
+
+  /* profile actions don't fit, put 'em below the profile image */
+  .profile-card-actions { float: left !important; }
+
+  /* textareas all have fixed widths. let's "fix" that. */
+  #tweet_dialog textarea, .twitter-anywhere-tweet-box-editor {
+    width: 95% !important;
+  }
+
+  /* hide embedly's extra fluff */
+  .embedly-instapaper, .embedly .media-attribution, .embedly-link {
+    display: none !important;
+  }
+
+  /* trim the extra padding on the tweet detail page */
+  .permalink-inner {
+    padding: 1em !important;
+  }
+}
+
+@media screen and (max-width: 575px) {
+
+  /* squeeze in the nav, removing the text */
+  .nav > li > a {
+    padding-left: 10px !important;
+    width: 20px !important;
+    white-space: nowrap !important;
+    overflow:hidden !important;
+  }
+
+  /* pad a little to help hide the text */
+  .nav > li > a .new-wrapper { padding-right: 20px !important; }
+
+  /* fix alignment of new status indicator */
+  .global-nav .nav-new { left: 36% !important; }
+
+
+  /* make larry (the twitter bird) move with the width */
+  .larry-topbar { left: 35% !important; }
+
+  /* profile modal fixes */
+  .profile-modal-header {
+    height: auto !important;
+  }
+  .profile-card .avatar {
+    width: 48px !important;
+    height: 48px !important;
+  }
+  .profile-card .fullname {
+    font-size: 1.5em !important;
+  }
+  .profile-card-inner {
+    width: 70% !important;
+  }
+  .profile-card-actions {
+    margin-top: 1em !important;
+    width: 100% !important;
+  }
+}
+
+@media screen and (max-width: 450px) {
+
+  /* avatar row doesn't wrap nicely, so just hide it */
+  .avatar-row { display: none !important; }
+
+  /* actions (when wrapped) have a gray artifact bc of background. hide it. */
+  .tweet .actions {
+    background: transparent !important;
+  }
+
+  /* keep actions' text and icons together */
+  .tweet .actions li a {
+    white-space: nowrap;
+  }
+}
+
+@media screen and (max-width: 408px) {
+
+  /* reduce the font size for this really narrow width */
+  body { font-size: 0.8em !important; }
+
+  /* only show search and compose tweet button. keyboard shortcuts FTW */
+  .topbar .nav, .larry-topbar, .topbar i.nav-search, .topbar-divider,
+  .form-search .dropdown-menu {
+    display: none !important;
+  }
+  .topbar .pull-right {
+    float: left !important;
+    width: 100% !important;
+  }
+  .topbar .form-search {
+    position: static !important;
+  }
+  .topbar .search-input, .topbar .search-input.focus {
+    width: 55% !important;
+    left: 7px !important;
+    top: 7px !important;
+  }
+
+  /* give more vertical space for dialogs */
+  .twttr-dialog-container {
+    margin: 25px auto !important;
+  }
+
+  /* make keyboard shortcuts overlay more readable */
+  .keyboard-shortcuts .modal-table {
+    margin-top: 10px !important;
+    margin-left: 0 !important;
+    float: none !important;
+  }
+
+  /* make dialog/modals fit */
+  .twttr-dialog-container,#retweet-dialog, #tweet_dialog, #profile_popup .modal {
+    width: 100% !important;
+  }
+
+  /* profile popup has a absolute left. remove it. */
+  #profile_popup .modal {
+    left: 0 !important;
+  }
+
+.twttr-dialog-container, 
+  .modal-content {
+    -webkit-border-radius: 0 !important;
+    border-radius: 0 !important;
+  }
 }
 
 @media screen and (max-width: 308px) {
@@ -173,7 +330,7 @@
   .tweet .stream-item-footer { display: none; }
 
   /* hide dialog close button. use <esc> instead */
-  .profile-modal .twttr-dialog-close {
+  .twttr-dialog .twttr-dialog-close {
     display: none !important;
   }
 
