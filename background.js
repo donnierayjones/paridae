@@ -23,6 +23,13 @@
         top: localStorage[STOR_TOP_KEY],
         left: localStorage[STOR_LEFT_KEY]
       };
+    } else {
+      return {
+        width: '320',
+        height: '600',
+        top: '0',
+        left: '0'
+      }
     }
   };
 
