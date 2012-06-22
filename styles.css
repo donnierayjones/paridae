@@ -16,7 +16,7 @@
 
   /* we don't need to always see the topbar / nav */
   .topbar { position: static !important; }
-  
+
   /* main components and overlays 100% width */
   .wrapper, .global-nav .container, .autocomplete-container, .header-module
   .search-header, .tweet-row, div.tweet-media > *, .inline-media-image img,
@@ -33,7 +33,8 @@
 
   /* rounded corners are so 90's */
   .conent-main, .content-header .header-inner, .stream-items > *, .module,
-  .module .flex-module, .stream-end-inner, .stream-loading, .permalink-inner {
+  .module .flex-module, .stream-end-inner, .stream-loading, .permalink-inner,
+  .modal-large .modal-content {
     border-radius: 0 !important;
   }
 
@@ -70,6 +71,11 @@
   /* trim the extra padding on the tweet detail page */
   .permalink-inner {
     padding: 1em !important;
+  }
+
+  /* fix large modal windows */
+  .modal-large {
+    width: 100% !important;
   }
 }
 
@@ -126,6 +132,11 @@
   /* keep actions' text and icons together */
   .tweet .actions li a {
     white-space: nowrap;
+  }
+
+  /* tame the inline tweetbox */
+  .inline-reply-tweetbox.swift .tweet-box {
+    width: 90% !important;
   }
 }
 
