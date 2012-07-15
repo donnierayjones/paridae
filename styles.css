@@ -21,8 +21,10 @@
   .wrapper, .global-nav .container, .autocomplete-container, .header-module
   .search-header, .tweet-row, div.tweet-media > *, .inline-media-image img,
   .original-tweet div.tweet-media iframe, .twttr-goto-user-input,
-  .search-title, .search-assist-related-queries {
+  .search-title, .search-assist-related-queries, .cards-base img,
+  .permalink-tweet div.tweet-media img, div.tweet-media .cards-base img {
     width: 100% !important;
+    height: auto !important;
     padding: 0 !important;
   }
 
@@ -63,11 +65,6 @@
     width: 95% !important;
   }
 
-  /* hide embedly's extra fluff */
-  .embedly-instapaper, .embedly .media-attribution, .embedly-link {
-    display: none !important;
-  }
-
   /* trim the extra padding on the tweet detail page */
   .permalink-inner {
     padding: 1em !important;
@@ -98,6 +95,14 @@
 
   /* make larry (the twitter bird) move with the width */
   .larry-topbar { left: 35% !important; }
+
+  /* newer modal windows have width of 520px. */
+  .modal {
+    width: 100% !important;
+  }
+  .tweet-form .tweet-box {
+    width: 95% !important;
+  }
 
   /* profile modal fixes */
   .profile-modal-header {
@@ -216,11 +221,6 @@
     width: 95% !important;
   }
 
-  /* hide embedly's extra fluff */
-  .embedly-instapaper, .embedly .media-attribution, .embedly-link {
-    display: none !important;
-  }
-
   /* trim the extra padding on the tweet detail page */
   .permalink-inner {
     padding: 1em !important;
@@ -246,25 +246,6 @@
 
   /* make larry (the twitter bird) move with the width */
   .larry-topbar { left: 35% !important; }
-
-  /* profile modal fixes */
-  .profile-modal-header {
-    height: auto !important;
-  }
-  .profile-card .avatar {
-    width: 48px !important;
-    height: 48px !important;
-  }
-  .profile-card .fullname {
-    font-size: 1.5em !important;
-  }
-  .profile-card-inner {
-    width: 70% !important;
-  }
-  .profile-card-actions {
-    margin-top: 1em !important;
-    width: 100% !important;
-  }
 }
 
 @media screen and (max-width: 450px) {

@@ -13,8 +13,6 @@
 * Open links with keyboard shortcut `o`.
 * Removes hover effects when the window is really small. Favors keyboard
   shortcuts over mouse interaction.
-* If you use the [Embedly extension][1], it hides the metadata output by
-  Embedly.
 
 ## Screenshots
 
