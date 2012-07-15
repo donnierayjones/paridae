@@ -1,8 +1,11 @@
 {
   "name": "Responsive Twitter",
   "version": "0.6.3",
+  "manifest_version": 2,
   "description": "Make twitter.com more responsive",
-  "background_page": "background.html",
+  "background": {
+    "page": "background.html"
+  },
   "content_scripts": [
     {
       "matches": ["https://twitter.com/*"],
