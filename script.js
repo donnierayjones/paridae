@@ -51,6 +51,9 @@ $(function() {
 
   // handle shortcut keys
   $(document).on('keypress', function(event) {
+    if ($(event.target).is('input, textarea')) {
+      return;
+    }
     var handler = keyHandlers[event.charCode.toString()];
     if(typeof handler == 'function') {
       handler();
