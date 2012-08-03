@@ -107,6 +107,7 @@
   }
   .tweet-form .tweet-box {
     width: 95% !important;
+    height: auto !important;
   }
 
   /* profile modal fixes */
