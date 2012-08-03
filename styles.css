@@ -28,6 +28,11 @@
     padding: 0 !important;
   }
 
+  /* media source icons need to be brought back to 16px */
+  .source img {
+    width: 16px !important;
+  }
+
   /* media container sets min-height for some reason. remove it. */
   .js-tweet-media-container {
     min-height: 0 !important;
