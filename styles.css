@@ -22,7 +22,7 @@
   .search-header, .tweet-row, div.tweet-media > *, .inline-media-image img,
   .original-tweet div.tweet-media iframe, .twttr-goto-user-input,
   .search-title, .search-assist-related-queries, .cards-base img,
-  .permalink-tweet div.tweet-media img, div.tweet-media .cards-base img {
+  .permalink-tweet div.tweet-media img, div.tweet-media .media img {
     width: 100% !important;
     height: auto !important;
     padding: 0 !important;
