@@ -17,6 +17,12 @@
   /* we don't need to always see the topbar / nav */
   .topbar { position: static !important; }
 
+  /* the tooltips go offscreen and I can't figure out how to prevent it...  so
+   * I'll just hide 'em */
+  .tipsy {
+    display: none !important;
+  }
+
   /* main components and overlays 100% width */
   .wrapper, .global-nav .container, .autocomplete-container, .header-module
   .search-header, .tweet-row, div.tweet-media > *, .inline-media-image img,
@@ -238,6 +244,11 @@
   /* textareas all have fixed widths. let's "fix" that. */
   #tweet_dialog textarea, .twitter-anywhere-tweet-box-editor {
     width: 95% !important;
+  }
+
+  /* direct message input is fixed width. fix it. */
+  .dm-to-input {
+    width: 85% !important;
   }
 
   /* trim the extra padding on the tweet detail page */
