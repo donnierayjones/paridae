@@ -29,7 +29,7 @@
         height: '600',
         top: '0',
         left: '0'
-      }
+      };
     }
   };
 
@@ -165,7 +165,7 @@
       }
 
       // let's just search!
-      navigateTo('#!/search/' + encodeURI(text));
+      navigateTo('#!/search/' + escape(text));
 
     });
   });
