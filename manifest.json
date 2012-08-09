@@ -18,7 +18,7 @@
     "48": "icon48.png",
     "128": "icon128.png"
   },
-  "omnibox": { "keyword" : "t" },
+  "omnibox": { "keyword" : "@" },
   "browser_action": {
     "default_icon": "icon48.png"
   },
