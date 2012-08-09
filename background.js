@@ -143,10 +143,10 @@
       var keysToLocations = {
         o: '', // Open
         h: '', // Home
-        c: 'i/connect', // Connect
+        c: '#!/i/connect', // Connect
         a: 'activity', // Activity
         r: 'mentions', // Mentions
-        d: 'i/discover', // Discover
+        d: '#!/i/discover', // Discover
         //p: 'TODO', // Profile
         f: 'favorites', // Favorites
         //l: 'TODO', // Lists
@@ -159,8 +159,14 @@
         return navigateTo(keysToLocations[loweredCase]);
       }
 
-      // go to user
-      navigateTo(text);
+      if(text[0] === '@') {
+        // go to user
+        return navigateTo(text.substr(1));
+      }
+
+      // let's just search!
+      navigateTo('#!/search/' + encodeURI(text));
+
     });
   });
 
