@@ -6,7 +6,7 @@
   var STOR_TOP_KEY = 'window_top';
   var STOR_LEFT_KEY = 'window_left';
 
-  var existing_twitter_window;
+  var existingTwitterWindow;
 
   var saveWindowDimensions = function(w) {
     localStorage[STOR_WIDTH_KEY] = w.width.toString(10);
@@ -47,6 +47,35 @@
     });
   };
 
+  // open twitter.com in a (mostly) chrome-less window
+
+  var openResponsiveTwitterWindow = function(callback) {
+    getExistingTwitterWindow(function(existingWindow) {
+      if(existingWindow !== undefined) {
+        chrome.windows.update(existingWindow.id, { focused: true });
+        if(callback) {
+          callback();
+        }
+      } else {
+        var dimensions = getWindowDimensions();
+        chrome.windows.create({
+          url: TWITTER_URL,
+          focused: true,
+          width: parseInt(dimensions.width, 10),
+          height: parseInt(dimensions.height, 10),
+          top: parseInt(dimensions.top, 10),
+          left: parseInt(dimensions.left, 10),
+          type: 'popup'
+        }, function(newWindow) {
+          existingTwitterWindow = newWindow;
+          if(callback) {
+            callback();
+          }
+        });
+      }
+    });
+  };
+
   // open a url in a new tab, highlight (or focus it), but keep primary focus
   // on twitter window.
   // if twitter is open in the same window as the "best" window, then we don't
@@ -69,13 +98,23 @@
   };
 
   var getExistingTwitterWindow = function(callback) {
-    if(existing_twitter_window === undefined) {
+    if(existingTwitterWindow === undefined) {
       return callback();
     }
     chrome.windows.getAll({populate: false /* no tabs */}, function(windows) {
       callback(_.find(windows, function(w) {
-        return w.id == existing_twitter_window.id;
+        return w.id == existingTwitterWindow.id;
       }));
+    });
+  };
+
+  var navigateTo = function(path) {
+    getExistingTwitterWindow(function(existingWindow) {
+      chrome.windows.get(existingWindow.id, { populate: true }, function(w) {
+        chrome.tabs.update(w.tabs[0].id, {
+          url: TWITTER_URL + path
+        });
+      });
     });
   };
 
@@ -98,26 +137,34 @@
     requestHandlers[request.action](request);
   });
 
-  // open twitter.com in a (mostly) chrome-less window
+  chrome.omnibox.onInputEntered.addListener(function(text) {
+    openResponsiveTwitterWindow(function() {
+
+      var keysToLocations = {
+        o: '', // Open
+        h: '', // Home
+        c: 'i/connect', // Connect
+        a: 'activity', // Activity
+        r: 'mentions', // Mentions
+        d: 'i/discover', // Discover
+        //p: 'TODO', // Profile
+        f: 'favorites', // Favorites
+        //l: 'TODO', // Lists
+        m: 'messages' // Messages
+      };
+
+      var loweredCase = text.toLowerCase();
+
+      if(text.length === 1 && keysToLocations.hasOwnProperty(loweredCase)) {
+        return navigateTo(keysToLocations[loweredCase]);
+      }
+
+      // go to user
+      navigateTo(text);
+    });
+  });
 
   chrome.browserAction.onClicked.addListener(function(tab) {
-    getExistingTwitterWindow(function(existing_window) {
-      if(existing_window !== undefined) {
-        chrome.windows.update(existing_window.id, { focused: true });
-      } else {
-        var dimensions = getWindowDimensions();
-        chrome.windows.create({
-          url: TWITTER_URL,
-          focused: true,
-          width: parseInt(dimensions.width, 10),
-          height: parseInt(dimensions.height, 10),
-          top: parseInt(dimensions.top, 10),
-          left: parseInt(dimensions.left, 10),
-          type: 'popup'
-        }, function(new_window) {
-          existing_twitter_window = new_window;
-        });
-      }
-    });
+    openResponsiveTwitterWindow();
   });
 })();
