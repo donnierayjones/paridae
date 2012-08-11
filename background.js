@@ -133,40 +133,133 @@
     }
   };
 
+  var omniboxKeyboardShortcuts = {
+    o: {
+      location: '',
+      description: 'Open Twitter'
+    },
+    h: {
+      location: '',
+      description: 'Go Home'
+    },
+    c: {
+      location: '#!/i/connect',
+      description: 'Go to Connect'
+    },
+    a: {
+      location: 'activity',
+      description: 'Go to Activity'
+    },
+    r: {
+      location: 'mentions',
+      description: 'Go to Mentions'
+    },
+    d: {
+      location: '#!/i/discover',
+      description: 'Go Discover'
+    },
+    //p: 'TODO', // Profile
+    f: {
+      location: 'favorites',
+      description: 'Go Favorites'
+    },
+    //l: 'TODO', // Lists
+    m: {
+      location: 'messages',
+      description: 'Go Messages'
+    }
+  };
+
+  var omniboxHandlers = {
+    keyboardShortcuts: {
+      canHandle: function(text) {
+        return text.length === 1 && omniboxKeyboardShortcuts.hasOwnProperty(this.l(text));
+      },
+      getDefaultSuggestion: function(text) {
+        return {
+          description: omniboxKeyboardShortcuts[this.l(text)].description
+        };
+      },
+      handle: function(text) {
+        // if 'o', just open twitter, don't navigate
+        if(this.l(text) == 'o') return;
+        navigateTo(omniboxKeyboardShortcuts[this.l(text)].location);
+      },
+      getSuggestions: function(text) {
+        return _.map(_.keys(omniboxKeyboardShortcuts), function(key) {
+          return {
+            content: key,
+            description: omniboxKeyboardShortcuts[key].description
+          };
+        });
+      },
+      l: function(text) { return text.toLowerCase(); }
+    },
+    userLookup: {
+      canHandle: function(text) {
+        return text[0] === '@';
+      },
+      getDefaultSuggestion: function(text) {
+        return {
+          description: 'Go to user ' + this.getUserName(text)
+        };
+      },
+      handle: function(text) {
+        navigateTo(this.getUserName(text));
+      },
+      getSuggestions: function(text) {
+        return [];
+      },
+      getUserName: function(text) {
+        return text.substr(1);
+      }
+    },
+    search: {
+      canHandle: function(text) {
+        return true;
+      },
+      getDefaultSuggestion: function(text) {
+        return {
+          description: "Search Twitter for '%s'"
+        };
+      },
+      handle: function(text) {
+        navigateTo('#!/search/' + escape(text));
+      },
+      getSuggestions: function(text) {
+        return [];
+      }
+    }
+  };
+
   chrome.extension.onRequest.addListener(function(request) {
     requestHandlers[request.action](request);
   });
 
+  chrome.omnibox.setDefaultSuggestion({
+    description: "Search Twitter for '%s'"
+  });
+
+  chrome.omnibox.onInputChanged.addListener(function(text, suggest) {
+    for(var h in omniboxHandlers) {
+      var handler = omniboxHandlers[h];
+      if(omniboxHandlers.hasOwnProperty(h) && handler.canHandle(text)) {
+        chrome.omnibox.setDefaultSuggestion(
+          handler.getDefaultSuggestion(text)
+        );
+        return suggest(handler.getSuggestions(text));
+      }
+    }
+  });
+
   chrome.omnibox.onInputEntered.addListener(function(text) {
     openResponsiveTwitterWindow(function() {
-
-      var keysToLocations = {
-        o: '', // Open
-        h: '', // Home
-        c: '#!/i/connect', // Connect
-        a: 'activity', // Activity
-        r: 'mentions', // Mentions
-        d: '#!/i/discover', // Discover
-        //p: 'TODO', // Profile
-        f: 'favorites', // Favorites
-        //l: 'TODO', // Lists
-        m: 'messages' // Messages
-      };
-
-      var loweredCase = text.toLowerCase();
-
-      if(text.length === 1 && keysToLocations.hasOwnProperty(loweredCase)) {
-        return navigateTo(keysToLocations[loweredCase]);
+      for(var h in omniboxHandlers) {
+        var handler = omniboxHandlers[h];
+        if(omniboxHandlers.hasOwnProperty(h) && handler.canHandle(text)) {
+          return handler.handle(text);
+        }
       }
-
-      if(text[0] === '@') {
-        // go to user
-        return navigateTo(text.substr(1));
-      }
-
-      // let's just search!
-      navigateTo('#!/search/' + escape(text));
-
     });
   });
 
