@@ -4,6 +4,10 @@
 
 ## Features
 
+* Omnibox support
+    - Search Twitter
+    - Go to User
+    - Supports Twitter.com's built-in keyboard shorcuts
 * Shrinks twitter.com to fit in almost any width you give it.
 * Disables jQuery animations so that it will feel quicker.
 * Provides a browser icon/button to open twitter.com in a chrome-less
@@ -16,11 +20,16 @@
 
 ## Screenshots
 
+### Omnibox
+
+![omnibox](http://f.cl.ly/items/1z0V2Y1U2U361I0g0a2G/omnibox.png)
+
+### Responsive Windows
 ![screenshot](http://f.cl.ly/items/461A2S0u1L0O0b1T022a/chrome-screen-large.png)
 
-### Icon / button to launch Twitter window:
+### Responsive Twitter Icon
 
-![icon](http://f.cl.ly/items/140D1K0z2b2p2y0C1x20/responsive-twitter-icon.png)
+![icon](http://f.cl.ly/items/0l0a36001T1t1Y2t2q1I/Screen%20Shot%202012-08-11%20at%203.22.31%20PM.png)
 
 ## Installation
 
