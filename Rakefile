@@ -8,7 +8,8 @@ task :package do
     'jquery.js',
     'manifest.json',
     'script.js',
-    'styles.css'
+    'styles.css',
+    'underscore.js'
   ]
   filelist = files.join(" ")
   %x[zip package.zip #{filelist}]
