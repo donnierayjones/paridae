@@ -84,9 +84,36 @@
     padding: 1em !important;
   }
 
+  /* remove border radius from modal/popups */
+  .twttr-dialog-container, .modal-content {
+    -webkit-border-radius: 0 !important;
+    border-radius: 0 !important;
+  }
+
   /* fix large modal windows */
   .modal-large {
     width: 100% !important;
+  }
+
+  /* fix geo status */
+  .tweet-box-extras {
+    white-space: nowrap;
+  }
+  .geo-picker .geo-status {
+    width: 100% !important;
+  }
+
+  /* fix thumbnail container */
+  .tweet-form .thumbnail-container {
+    width: 99% !important;
+  }
+
+  /* tame the inline tweetbox */
+  .inline-reply-tweetbox.swift .tweet-box,
+  .inline-reply-tweetbox .thumbnail-container {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    height: auto !important;
   }
 }
 
@@ -100,24 +127,15 @@
     overflow:hidden !important;
   }
 
+  .bird-topbar-etched {
+    left: 35% !important;
+  }
+
   /* pad a little to help hide the text */
   .nav > li > a .new-wrapper { padding-right: 20px !important; }
 
   /* fix alignment of new status indicator */
   .global-nav .nav-new { left: 36% !important; }
-
-
-  /* make larry (the twitter bird) move with the width */
-  .larry-topbar { left: 35% !important; }
-
-  /* newer modal windows have width of 520px. */
-  .modal {
-    width: 100% !important;
-  }
-  .tweet-form .tweet-box {
-    width: 95% !important;
-    height: auto !important;
-  }
 
   /* profile modal fixes */
   .profile-modal-header {
@@ -139,6 +157,17 @@
   }
 }
 
+@media screen and (max-width: 520px) {
+  /* newer modal windows have width of 520px. */
+  .modal {
+    width: 100% !important;
+  }
+  .tweet-form .tweet-box {
+    width: 95% !important;
+    height: auto !important;
+  }
+}
+
 @media screen and (max-width: 450px) {
 
   /* avatar row doesn't wrap nicely, so just hide it */
@@ -152,11 +181,6 @@
   /* keep actions' text and icons together */
   .tweet .actions li a {
     white-space: nowrap;
-  }
-
-  /* tame the inline tweetbox */
-  .inline-reply-tweetbox.swift .tweet-box {
-    width: 90% !important;
   }
 }
 
@@ -215,12 +239,6 @@
     left: 0 !important;
   }
 
-  /* remove border radius from modal/popups */
-  .twttr-dialog-container, .modal-content {
-    -webkit-border-radius: 0 !important;
-    border-radius: 0 !important;
-  }
-
   /* get rid of this button. just hit l instead */
   .close-all-tweets { display: none !important; }
 
@@ -272,10 +290,6 @@
 
   /* fix alignment of new status indicator */
   .global-nav .nav-new { left: 36% !important; }
-
-
-  /* make larry (the twitter bird) move with the width */
-  .larry-topbar { left: 35% !important; }
 }
 
 @media screen and (max-width: 450px) {
@@ -370,5 +384,7 @@
   .content { margin-left: 0 !important; }
 
   /* shrink margin on replies too, because avatars are removed there too */
-  .replies .tweet { padding: 9px !important; } 
+  .inline-reply-tweetbox, .replies .tweet {
+    padding: 9px !important;
+  }
 }
