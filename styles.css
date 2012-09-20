@@ -17,6 +17,11 @@
   /* we don't need to always see the topbar / nav */
   .topbar { position: static !important; }
 
+  /* fit the bird */
+  .bird-topbar-etched {
+    left: 58% !important;
+  }
+
   /* the tooltips go offscreen and I can't figure out how to prevent it...  so
    * I'll just hide 'em */
   .tipsy {
@@ -29,10 +34,23 @@
   .original-tweet div.tweet-media iframe, .twttr-goto-user-input,
   .search-title, .search-assist-related-queries, .cards-base img,
   .permalink-tweet div.tweet-media img, div.tweet-media .media img,
-  #tweet_dialog, .twttr-dialog-container {
+  #tweet_dialog, .twttr-dialog-container, .profile-card.profile-header,
+  .profile-header-inner-overlay {
     width: 100% !important;
     height: auto !important;
     padding: 0 !important;
+  }
+
+  /* fix header background */
+  .profile-card.profile-header .profile-header-inner {
+    background-size: cover;
+  }
+  /* fix header overlay */
+  .profile-header-inner-overlay {
+    bottom: 0 !important;
+    top: 60px !important;
+    width: 100% !important;
+    height: 200px !important;
   }
 
   /* media source icons need to be brought back to 16px */
@@ -117,8 +135,7 @@
   }
 }
 
-@media screen and (max-width: 575px) {
-
+@media screen and (max-width:625px) {
   /* squeeze in the nav, removing the text */
   .nav > li > a {
     padding-left: 10px !important;
@@ -128,11 +145,14 @@
   }
 
   .bird-topbar-etched {
-    left: 35% !important;
+    left: 43% !important;
   }
 
   /* pad a little to help hide the text */
   .nav > li > a .new-wrapper { padding-right: 20px !important; }
+}
+
+@media screen and (max-width: 575px) {
 
   /* fix alignment of new status indicator */
   .global-nav .nav-new { left: 36% !important; }
@@ -140,10 +160,6 @@
   /* profile modal fixes */
   .profile-modal-header {
     height: auto !important;
-  }
-  .profile-card .avatar {
-    width: 48px !important;
-    height: 48px !important;
   }
   .profile-card .fullname {
     font-size: 1.5em !important;
@@ -181,6 +197,21 @@
   /* keep actions' text and icons together */
   .tweet .actions li a {
     white-space: nowrap;
+  }
+}
+
+@media screen and (max-width: 440px) {
+  /* hide the bird */
+  .bird-topbar-etched {
+    display: none !important;
+  }
+
+  /* help make profile content fit */
+  .profile-card.profile-header .profile-picture {
+    margin-top: 10px !important;
+  }
+  .profile-header .profile-card-inner {
+    width: 95% !important;
   }
 }
 
