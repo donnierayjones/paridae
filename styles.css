@@ -158,9 +158,6 @@
   .global-nav .nav-new { left: 36% !important; }
 
   /* profile modal fixes */
-  .profile-modal-header {
-    height: auto !important;
-  }
   .profile-card .fullname {
     font-size: 1.5em !important;
   }
