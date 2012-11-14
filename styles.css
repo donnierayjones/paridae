@@ -18,7 +18,7 @@
   .topbar { position: static !important; }
 
   /* fit the bird */
-  .bird-topbar-etched {
+  .bird-topbar-etched, .pushing-state #pushStateSpinner {
     left: 58% !important;
   }
 
@@ -144,7 +144,7 @@
     overflow:hidden !important;
   }
 
-  .bird-topbar-etched {
+  .bird-topbar-etched, .pushing-state #pushStateSpinner {
     left: 43% !important;
   }
 
@@ -199,7 +199,7 @@
 
 @media screen and (max-width: 440px) {
   /* hide the bird */
-  .bird-topbar-etched {
+  .bird-topbar-etched, .pushing-state #pushStateSpinner {
     display: none !important;
   }
 
@@ -341,9 +341,9 @@
   /* reduce the font size for this really narrow width */
   body { font-size: 0.8em !important; }
 
-  /* only show search and compose tweet button. keyboard shortcuts FTW */
+  /* only show search. keyboard shortcuts FTW */
   .topbar .nav, .larry-topbar, .topbar i.nav-search, .topbar-divider,
-  .form-search .dropdown-menu {
+  .form-search .dropdown-menu, .topbar-tweet-btn {
     display: none !important;
   }
   .topbar .pull-right {
@@ -354,9 +354,13 @@
     position: static !important;
   }
   .topbar .search-input, .topbar .search-input.focus {
-    width: 55% !important;
-    left: 7px !important;
+    width: auto !important;
     top: 7px !important;
+    margin-right: 7px !important;
+  }
+  .global-nav .search-icon {
+    top: 7px !important;
+    right: 10px !important;
   }
 
   /* give more vertical space for dialogs */
