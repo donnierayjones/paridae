@@ -3,6 +3,10 @@
   /* less than 250px doesnt make much sense */
   body { min-width: 250px !important; }
 
+  .global-nav .container {
+    min-width: auto !important;
+  }
+
   /* remove margin between header and content */
   .module {
     margin-bottom: 0 !important;
@@ -13,9 +17,6 @@
 
   /* make main twitter feed 100% width now that there's no sidebar */
   .content-main { float: none !important; width: 100% !important; }
-
-  /* we don't need to always see the topbar / nav */
-  .topbar { position: static !important; }
 
   /* fit the bird */
   .bird-topbar-etched, .pushing-state #pushStateSpinner {
@@ -39,6 +40,11 @@
     width: 100% !important;
     height: auto !important;
     padding: 0 !important;
+  }
+
+  /* fix padding for top of page (padding under topbar) */
+  #page-container {
+    padding-top: 39px !important;
   }
 
   /* fix header background */
