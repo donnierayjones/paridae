@@ -340,6 +340,14 @@
   .tweet .actions li a {
     white-space: nowrap;
   }
+
+  /* hide tweet action text - use icons */
+  .tweet-actions {
+    float: right !important;
+  }
+  .tweet-actions a b {
+    display: none !important;
+  }
 }
 
 @media screen and (max-width: 408px) {
