@@ -50,6 +50,7 @@
   /* fix header background */
   .profile-card.profile-header .profile-header-inner {
     background-size: cover;
+    background-position: center;
   }
   /* fix header overlay */
   .profile-header-inner-overlay {
