@@ -25,9 +25,13 @@ $(function() {
     });
   };
 
-  $('body').on('click', 'a[target="_blank"]', function(e) {
+  $('body').on('click', 'a[target="_blank"], a[href^="http://t.co"]', function(e) {
     e.preventDefault();
-    onClickLink($(this).attr('href'));
+    var href = $(this).attr('href');
+    if(href.substring(0,4) != 'http') {
+      href = "https://twitter.com/" + href;
+    }
+    onClickLink(href);
   });
 
   $(window).on('beforeunload', onBeforeUnload);
@@ -39,9 +43,10 @@ $(function() {
   var keyHandlers = {
     // o
     '111': function() {
-      var $current_tweet = $('.hovered-stream-item, .js-had-hovered-stream-item');
-      if($current_tweet.length > 0) {
-        var $links = $('a[target="_blank"]', $current_tweet);
+      var $currentTweet = $('.hovered-stream-item, .js-had-hovered-stream-item');
+      if($currentTweet.length > 0) {
+        var $tweetContext = $('.js-tweet-text', $currentTweet);
+        var $links = $('a', $tweetContext);
         if($links.length > 0) {
           $($links[0]).click();
         }
