@@ -74,7 +74,7 @@
   .conent-main, .content-header .header-inner, .stream-items > *, .module,
   .module .flex-module, .stream-end-inner, .stream-loading, .permalink-inner,
   .modal-large .modal-content, .twttr-dialog-footer, #tweet_dialog,
-  .twttr-dialog-container, .modal-content {
+  .twttr-dialog-container, .modal-content, .permalink {
     border-radius: 0 !important;
     -webkit-border-radius: 0 !important;
   }
@@ -104,9 +104,10 @@
     width: 95% !important;
   }
 
-  /* trim the extra padding on the tweet detail page */
-  .permalink-inner {
-    padding: 1em !important;
+  /* remove border radius from modal/popups */
+  .twttr-dialog-container, .modal-content {
+    -webkit-border-radius: 0 !important;
+    border-radius: 0 !important;
   }
 
   /* fix large modal windows */
@@ -169,6 +170,28 @@
   .profile-card-actions {
     margin-top: 1em !important;
     width: 100% !important;
+  }
+
+  /* fix permalink styles */
+  .permalink-tweet, .permalink .inline-reply-tweetbox {
+    padding: 1.5em !important;
+  }
+  .permalink-tweet .tweet-actions {
+    float: none !important;
+  }
+  .permalink-tweet .tweet-actions a b {
+    display: inline !important;
+  }
+  .permalink-tweet .permalink-header .avatar {
+    top: 1.5em !important;
+    left: 1.5em !important;
+  }
+  .permalink-replies .tweet .avatar {
+    left: 1.5em !important;
+  }
+  .permalink-replies .tweet {
+    padding-left: 6em !important;
+    padding-right: 1.5em !important;
   }
 }
 
@@ -298,11 +321,6 @@
   .dm-to-input {
     width: 85% !important;
   }
-
-  /* trim the extra padding on the tweet detail page */
-  .permalink-inner {
-    padding: 1em !important;
-  }
 }
 
 @media screen and (max-width: 575px) {
@@ -417,7 +435,7 @@
   .content { margin-left: 0 !important; }
 
   /* shrink margin on replies too, because avatars are removed there too */
-  .inline-reply-tweetbox, .replies .tweet {
+  .inline-reply-tweetbox, .replies .tweet, .permalink-replies .tweet {
     padding: 9px !important;
   }
 }
