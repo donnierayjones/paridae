@@ -26,8 +26,8 @@
       };
     } else {
       return {
-        width: '320',
-        height: '600',
+        width: '408',
+        height: '700',
         top: '0',
         left: '0'
       };
@@ -70,7 +70,7 @@
           height: parseInt(dimensions.height, 10),
           top: parseInt(dimensions.top, 10),
           left: parseInt(dimensions.left, 10),
-          type: 'popup'
+          type: 'panel'
         }, function(newWindow) {
           existingTwitterWindow = newWindow;
           if(callback) {
