@@ -7,6 +7,7 @@
   var STOR_LEFT_KEY = 'window_left';
 
   var existingTwitterWindow;
+  var mostRecentBrowserWindow;
 
   var saveWindowDimensions = function(w) {
     localStorage[STOR_WIDTH_KEY] = w.width.toString(10);
@@ -33,18 +34,22 @@
     }
   };
 
-  // note: "best" is currently defined as the one with the largest width
+  // note: "best" is currently defined as the most recently focused
 
-  var findBestWindow = function(windows) {
-    var max = 0;
-    _.each(windows, function(window) {
-      if(window.width > max) {
-        max = window.width;
-      }
-    });
-    return _.find(windows, function(window) {
-      return window.width === max;
-    });
+  var findBestWindow = function(callback) {
+    if(mostRecentBrowserWindow !== undefined) {
+      chrome.windows.get(mostRecentBrowserWindow.id, {populate: true}, function(window) {
+        callback(window);
+      });
+    } else {
+      chrome.windows.getAll({populate:true}, function(windows) {
+        var firstNormalWindow = _.find(windows, function(window) {
+          return window.type === "normal";
+        });
+        mostRecentBrowserWindow = firstNormalWindow;
+        callback(firstNormalWindow);
+      });
+    }
   };
 
   // open twitter.com in a (mostly) chrome-less window
@@ -78,12 +83,20 @@
 
   // open a url in a new tab, highlight (or focus it), but keep primary focus
   // on twitter window.
-  // if twitter is open in the same window as the "best" window, then we don't
-  // focus the tab, as that would steal focus from twitter.
 
   var openNewTabInBestWindow = function(url) {
-    chrome.windows.getAll({populate: true /* get tabs */}, function(windows) {
-      var window = findBestWindow(windows);
+    findBestWindow(function(window) {
+      if(window === undefined) {
+        var hasRecentWindow = mostRecentBrowserWindow !== undefined;
+        return chrome.windows.create({
+          url: url,
+          focused: true,
+          width: hasRecentWindow ? mostRecentBrowserWindow.width : 1024,
+          height: hasRecentWindow ? mostRecentBrowserWindow.height : 600,
+          left: hasRecentWindow ? mostRecentBrowserWindow.left : 25,
+          top: hasRecentWindow ? mostRecentBrowserWindow.top : 25
+        });
+      }
       chrome.tabs.create({
         url: url,
         windowId: window.id,
@@ -107,6 +120,14 @@
       }));
     });
   };
+
+  chrome.windows.onFocusChanged.addListener(function(windowId) {
+    chrome.windows.get(windowId, {populate: true}, function(window) {
+      if(window !== undefined && window.type == "normal") {
+        mostRecentBrowserWindow = window;
+      }
+    });
+  });
 
   var navigateTo = function(path) {
     getExistingTwitterWindow(function(existingWindow) {

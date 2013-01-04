@@ -2,6 +2,8 @@ $(function() {
 
   var isMacOS = navigator.appVersion.indexOf("Mac") > 0;
 
+  var linkSelector = 'a[target="_blank"], a[href^="http://t.co"]';
+
   var onClickLink = function(url) {
     chrome.extension.sendRequest({
       action: 'openLink',
@@ -25,7 +27,7 @@ $(function() {
     });
   };
 
-  $('body').on('click', 'a[target="_blank"], a[href^="http://t.co"]', function(e) {
+  $('body').on('click', linkSelector, function(e) {
     e.preventDefault();
     var href = $(this).attr('href');
     if(href.substring(0,4) != 'http') {
@@ -45,8 +47,8 @@ $(function() {
     '111': function() {
       var $currentTweet = $('.hovered-stream-item, .js-had-hovered-stream-item');
       if($currentTweet.length > 0) {
-        var $tweetContext = $('.js-tweet-text', $currentTweet);
-        var $links = $('a', $tweetContext);
+        var $tweetText = $('.js-tweet-text', $currentTweet);
+        var $links = $(linkSelector, $tweetText);
         if($links.length > 0) {
           $($links[0]).click();
         }
