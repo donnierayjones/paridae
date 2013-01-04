@@ -18,6 +18,16 @@
   /* make main twitter feed 100% width now that there's no sidebar */
   .content-main { float: none !important; width: 100% !important; }
 
+  /* make topbar scroll with page to maximize vertical real-estate */
+  .topbar {
+    position: static !important;
+  }
+
+  /* fix padding for top of page (padding under topbar) */
+  #page-container {
+    padding-top: 0 !important;
+  }
+
   /* fit the bird */
   .bird-topbar-etched, .pushing-state #pushStateSpinner {
     left: 58% !important;
@@ -56,11 +66,6 @@
     left: 0;
     width: 100%;
     height: 100%;
-  }
-
-  /* fix padding for top of page (padding under topbar) */
-  #page-container {
-    padding-top: 39px !important;
   }
 
   /* fix header background */
@@ -110,6 +115,15 @@
   /* form that wraps search input needs default width */
   .global-nav .form-search {
     width: auto !important;
+  }
+
+  /* move the dropdown-menu under the search. */
+  .form-search .dropdown-menu {
+    left: -215px !important;
+  }
+  /* move the caret for the search dropdown to center it */
+  .form-search .dropdown-caret {
+    left: 115px !important;
   }
 
   /* profile actions don't fit, put 'em below the profile image */
@@ -259,8 +273,7 @@
   body { font-size: 0.8em !important; }
 
   /* only show search and compose tweet button. keyboard shortcuts FTW */
-  .topbar .nav, .larry-topbar, .topbar i.nav-search, .topbar-divider,
-  .form-search .dropdown-menu {
+  .topbar .nav, .larry-topbar, .topbar i.nav-search, .topbar-divider {
     display: none !important;
   }
   .topbar .pull-right {
@@ -378,7 +391,7 @@
 
   /* only show search. keyboard shortcuts FTW */
   .topbar .nav, .larry-topbar, .topbar i.nav-search, .topbar-divider,
-  .form-search .dropdown-menu, .topbar-tweet-btn {
+  .topbar-tweet-btn {
     display: none !important;
   }
   .topbar .pull-right {
@@ -396,6 +409,17 @@
   .global-nav .search-icon {
     top: 7px !important;
     right: 10px !important;
+  }
+
+  /* move search dropdown back to the right and center */
+  .form-search .dropdown-menu {
+    top: 40px !important;
+    left: 10px !important;
+  }
+
+  /* move caret back */
+  .form-search .dropdown-caret {
+    left: 10px !important;
   }
 
   /* give more vertical space for dialogs */
