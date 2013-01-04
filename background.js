@@ -164,7 +164,7 @@
       description: 'Go Home'
     },
     c: {
-      location: '#!/i/connect',
+      location: 'i/connect',
       description: 'Go to Connect'
     },
     a: {
@@ -176,7 +176,7 @@
       description: 'Go to Mentions'
     },
     d: {
-      location: '#!/i/discover',
+      location: 'i/discover',
       description: 'Go Discover'
     },
     //p: 'TODO', // Profile
