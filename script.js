@@ -58,7 +58,7 @@ $(function() {
 
   // handle shortcut keys
   $(document).on('keypress', function(event) {
-    if ($(event.target).is('input, textarea')) {
+    if ($(event.target).is('input, textarea, .rich-editor')) {
       return;
     }
     var handler = keyHandlers[event.charCode.toString()];
