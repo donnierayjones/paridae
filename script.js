@@ -2,7 +2,7 @@ $(function() {
 
   var isMacOS = navigator.appVersion.indexOf("Mac") > 0;
 
-  var linkSelector = 'a[target="_blank"], a[href^="http://t.co"]';
+  var linkSelector = 'a[target="_blank"], a[href^="http://t.co"], a[href^="https://t.co"]';
 
   var onClickLink = function(url) {
     chrome.extension.sendRequest({
