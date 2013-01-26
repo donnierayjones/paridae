@@ -245,7 +245,7 @@
         };
       },
       handle: function(text) {
-        navigateTo('#!/search/' + escape(text));
+        navigateTo('search/' + escape(text));
       },
       getSuggestions: function(text) {
         return [];
