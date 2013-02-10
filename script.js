@@ -2,7 +2,19 @@ $(function() {
 
   var isMacOS = navigator.appVersion.indexOf("Mac") > 0;
 
-  var linkSelector = 'a[target="_blank"], a[href^="http://t.co"], a[href^="https://t.co"]';
+  var linkSelector =
+
+     // t.co is used for shortened links and twitter images
+    'a[href^="http://t.co"], a[href^="https://t.co"],' +
+
+    // settings link from menu dropdown
+    'a[data-nav="settings"],' +
+
+    // edit profile link (there are more than 1)
+    'a[href="/settings/profile"],' +
+
+    // help link from menu dropdown
+    'a[data-nav="help_center"]';
 
   var onClickLink = function(url) {
     chrome.extension.sendRequest({
@@ -28,8 +40,18 @@ $(function() {
   };
 
   $('body').on('click', linkSelector, function(e) {
+
+    // if large window, just user normal link behavior
+
+    if(document.width > 865) {
+      return;
+    }
+
     e.preventDefault();
     var href = $(this).attr('href');
+    if(href.substring(0,2) == '//') {
+      href = window.location.protocol + href;
+    }
     if(href.substring(0,4) != 'http') {
       href = "https://twitter.com/" + href;
     }

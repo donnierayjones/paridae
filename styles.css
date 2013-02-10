@@ -46,7 +46,7 @@
   .search-title, .search-assist-related-queries, .cards-base img,
   .permalink-tweet div.tweet-media img, div.tweet-media .media img,
   #tweet_dialog, .twttr-dialog-container, .profile-card.profile-header,
-  .profile-header-inner-overlay {
+  .profile-header-inner-overlay, .swift-media-gallery {
     width: 100% !important;
     height: auto !important;
     padding: 0 !important;
@@ -81,6 +81,11 @@
     height: 200px !important;
   }
 
+  /* fix profile image overlay settings dropdown */
+  .profile-card.profile-header .profile-picture {
+    z-index: 4 !important;
+  }
+
   /* media source icons need to be brought back to 16px */
   .source img {
     width: 16px !important;
@@ -92,10 +97,11 @@
   }
 
   /* rounded corners are so 90's */
-  .conent-main, .content-header .header-inner, .stream-items > *, .module,
-  .module .flex-module, .stream-end-inner, .stream-loading, .permalink-inner,
-  .modal-large .modal-content, .twttr-dialog-footer, #tweet_dialog,
-  .twttr-dialog-container, .modal-content, .permalink {
+  .conent-main, .content-header .header-inner, .stream-items > *,
+  .module, .module .flex-module, .stream-end-inner, .stream-loading,
+  .permalink-inner, .modal-large .modal-content, .twttr-dialog-footer,
+  #tweet_dialog, .twttr-dialog-container, .modal-content, .permalink,
+  .modal-header
     border-radius: 0 !important;
     -webkit-border-radius: 0 !important;
   }
@@ -134,10 +140,12 @@
     width: 95% !important;
   }
 
-  /* remove border radius from modal/popups */
-  .twttr-dialog-container, .modal-content {
-    -webkit-border-radius: 0 !important;
-    border-radius: 0 !important;
+  /* fix profile image overlay */
+  .swift-media-gallery {
+    min-width: 100% !important;
+    position: absolute !important;
+    top: 40px !important;
+    left: 0 !important;
   }
 
   /* fix large modal windows */
@@ -442,11 +450,6 @@
   /* profile popup has a absolute left. remove it. */
   #profile_popup .modal {
     left: 0 !important;
-  }
-
-  .twttr-dialog-container, .modal-content {
-    -webkit-border-radius: 0 !important;
-    border-radius: 0 !important;
   }
 }
 
