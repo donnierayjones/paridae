@@ -101,7 +101,7 @@
   .module, .module .flex-module, .stream-end-inner, .stream-loading,
   .permalink-inner, .modal-large .modal-content, .twttr-dialog-footer,
   #tweet_dialog, .twttr-dialog-container, .modal-content, .permalink,
-  .modal-header
+  .modal-header {
     border-radius: 0 !important;
     -webkit-border-radius: 0 !important;
   }
