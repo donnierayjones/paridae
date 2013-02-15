@@ -18,14 +18,9 @@
   /* make main twitter feed 100% width now that there's no sidebar */
   .content-main { float: none !important; width: 100% !important; }
 
-  /* make topbar scroll with page to maximize vertical real-estate */
-  .topbar {
-    position: static !important;
-  }
-
   /* fix padding for top of page (padding under topbar) */
   #page-container {
-    padding-top: 0 !important;
+    padding-top: 39px !important;
   }
 
   /* fit the bird */
