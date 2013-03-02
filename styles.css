@@ -1,11 +1,7 @@
 @media screen and (max-width: 865px) {
 
-  /* less than 250px doesnt make much sense */
-  body { min-width: 250px !important; }
-
-  .global-nav .container {
-    min-width: auto !important;
-  }
+  /* less than 295px doesnt make much sense */
+  body, .global-nav .container { min-width: 295px !important; }
 
   /* remove margin between header and content */
   .module {
@@ -23,9 +19,21 @@
     padding-top: 39px !important;
   }
 
-  /* fit the bird */
-  .bird-topbar-etched, .pushing-state #pushStateSpinner {
-    left: 58% !important;
+  /* pad a little to help hide the text */
+  .topbar > .nav > li > a .new-wrapper { padding-right: 20px !important; }
+
+  /* fix alignment of new status indicator */
+  .global-nav .nav-new { left: 50% !important; }
+
+  /* fit the bird and loading indicator */
+  .bird-topbar-etched, .pushstate-spinner {
+    margin-left: 0 !important;
+    position: absolute !important;
+    left: 42% !important;
+    top: 3px !important;
+  }
+  .pushstate-spinner {
+    margin-top: 5px !important;
   }
 
   /* the tooltips go offscreen and I can't figure out how to prevent it...  so
@@ -104,15 +112,6 @@
   /* get rid of this button. just hit l instead */
   .close-all-tweets { display: none !important; }
 
-  /* make the ever-expanding search input stay fixed width, and disable
-     transitions/animations */
-  .global-nav .search-input, .global-nav .search-input:focus, .global-nav
-  .search-input.focus, .global-nav .highlight .search-input,
-  .global-nav .dwrli .search-input {
-    width: 75px !important;
-    -webkit-transition: none !important;
-  }
-
   /* form that wraps search input needs default width */
   .global-nav .form-search {
     width: auto !important;
@@ -124,7 +123,7 @@
   }
   /* move the caret for the search dropdown to center it */
   .form-search .dropdown-caret {
-    left: 115px !important;
+    left: 135px !important;
   }
 
   /* profile actions don't fit, put 'em below the profile image */
@@ -174,31 +173,17 @@
     width: 100% !important;
     box-sizing: border-box !important;
   }
-}
 
-@media screen and (max-width:625px) {
   /* squeeze in the nav, removing the text */
-  .nav > li > a {
+  .topbar > .nav > li > a {
     padding-left: 10px !important;
     width: 20px !important;
     white-space: nowrap !important;
     overflow:hidden !important;
   }
-
-  /* pad a little to help hide the text */
-  .nav > li > a .new-wrapper { padding-right: 20px !important; }
-
-  /* align the bird/loading symbol in the center */
-  .bird-topbar-etched, .pushing-state #pushStateSpinner {
-    left: 43% !important;
-  }
 }
 
 @media screen and (max-width: 575px) {
-
-  /* fix alignment of new status indicator */
-  .global-nav .nav-new { left: 36% !important; }
-
   /* profile modal fixes */
   .profile-card .fullname {
     font-size: 1.5em !important;
@@ -259,11 +244,22 @@
   .tweet .actions li a {
     white-space: nowrap;
   }
+  /* hide tweet action text - use icons */
+  .tweet-actions a b {
+    display: none !important;
+  }
+  .tweet-actions {
+    float: right !important;
+  }
+  /* if there's expanded content clear floated tweet actions */
+  .expanded-content {
+    clear: right;
+  }
 }
 
 @media screen and (max-width: 440px) {
   /* hide the bird */
-  .bird-topbar-etched, .pushing-state #pushStateSpinner {
+  .bird-topbar-etched, .pushstate-spinner {
     display: none !important;
   }
 
@@ -281,21 +277,31 @@
   /* reduce the font size for this really narrow width */
   body { font-size: 0.8em !important; }
 
-  /* only show search and compose tweet button. keyboard shortcuts FTW */
-  .topbar .nav, .larry-topbar, .topbar i.nav-search, .topbar-divider {
+  /* only show search and left nav */
+  .topbar .pull-right .nav, .topbar-divider, .topbar-tweet-btn {
     display: none !important;
   }
+
+  /* enlarge search */
+  .global-nav .search-input, .global-nav .search-input:focus, .global-nav
+  .search-input.focus, .global-nav .highlight .search-input,
+  .global-nav .dwrli .search-input {
+    width: 125px !important;
+  }
+
   .topbar .pull-right {
-    float: left !important;
-    width: 100% !important;
+    margin-right: 7px;
   }
-  .topbar .form-search {
-    position: static !important;
+
+  /* move search dropdown back to the right and center */
+  .form-search .dropdown-menu {
+    left: -295px !important;
+    width: 285px !important;
   }
-  .topbar .search-input, .topbar .search-input.focus {
-    width: 55% !important;
-    left: 7px !important;
-    top: 7px !important;
+
+  /* hide caret because it's hard to align properly */
+  .form-search .dropdown-caret {
+    display: none;
   }
 
   /* give more vertical space for dialogs */
@@ -316,7 +322,8 @@
   }
 
   /* make dialog/modals fit */
-  .twttr-dialog-container, #retweet-dialog, #tweet_dialog, #profile_popup .modal {
+  .twttr-dialog-container, #retweet-dialog, #tweet_dialog,
+  #profile_popup .modal {
     width: 100% !important;
   }
 
@@ -328,18 +335,6 @@
   /* profile popup has a absolute left. remove it. */
   #profile_popup .modal {
     left: 0 !important;
-  }
-
-  /* get rid of this button. just hit l instead */
-  .close-all-tweets { display: none !important; }
-
-  /* make the ever-expanding search input stay fixed width, and disable
-     transitions/animations */
-  .global-nav .search-input, .global-nav .search-input:focus, .global-nav
-  .search-input.focus, .global-nav .highlight .search-input,
-  .global-nav .dwrli .search-input {
-    width: 75px !important;
-    -webkit-transition: none !important;
   }
 
   /* form that wraps search input needs default width */
@@ -361,100 +356,28 @@
   }
 }
 
-@media screen and (max-width: 575px) {
-
-  /* squeeze in the nav, removing the text */
-  .nav > li > a {
-    padding-left: 10px !important;
-    width: 20px !important;
-    white-space: nowrap !important;
-    overflow:hidden !important;
+@media screen and (max-width: 370px) {
+  /* shrink search */
+  .global-nav .search-input, .global-nav .search-input:focus, .global-nav
+  .search-input.focus, .global-nav .highlight .search-input, .global-nav .dwrli
+  .search-input {
+    width: 100px !important;
   }
-
-  /* pad a little to help hide the text */
-  .nav > li > a .new-wrapper { padding-right: 20px !important; }
-
-  /* fix alignment of new status indicator */
-  .global-nav .nav-new { left: 36% !important; }
 }
 
-@media screen and (max-width: 450px) {
-
-  /* avatar row doesn't wrap nicely, so just hide it */
-  .avatar-row { display: none !important; }
-
-  /* hide tweet action text - use icons */
-  .tweet-actions a b {
-    display: none !important;
-  }
-  .tweet-actions {
-    float: right !important;
-  }
-  
-}
-
-@media screen and (max-width: 408px) {
-
-  /* reduce the font size for this really narrow width */
-  body { font-size: 0.8em !important; }
-
-  /* only show search. keyboard shortcuts FTW */
-  .topbar .nav, .larry-topbar, .topbar i.nav-search, .topbar-divider,
-  .topbar-tweet-btn {
-    display: none !important;
-  }
-  .topbar .pull-right {
-    float: left !important;
-    width: 100% !important;
-  }
-  .topbar .form-search {
-    position: static !important;
-  }
-  .topbar .search-input, .topbar .search-input.focus {
-    width: auto !important;
-    top: 7px !important;
-    margin-right: 7px !important;
-  }
-  .global-nav .search-icon {
-    top: 7px !important;
-    right: 10px !important;
-  }
-
-  /* move search dropdown back to the right and center */
-  .form-search .dropdown-menu {
-    top: 40px !important;
-    left: 10px !important;
-  }
-
-  /* move caret back */
-  .form-search .dropdown-caret {
-    left: 10px !important;
-  }
-
-  /* give more vertical space for dialogs */
-  .twttr-dialog-container {
-    margin: 25px auto !important;
-  }
-
-  /* make keyboard shortcuts overlay more readable */
-  .keyboard-shortcuts .modal-table {
-    margin-top: 10px !important;
-    margin-left: 0 !important;
-    float: none !important;
-  }
-
-  /* make dialog/modals fit */
-  .twttr-dialog-container,#retweet-dialog, #tweet_dialog, #profile_popup .modal {
-    width: 100% !important;
-  }
-
-  /* profile popup has a absolute left. remove it. */
-  #profile_popup .modal {
-    left: 0 !important;
+@media screen and (max-width: 335px) {
+  /* shrink search */
+  .global-nav .search-input, .global-nav .search-input:focus, .global-nav
+  .search-input.focus, .global-nav .highlight .search-input, .global-nav .dwrli
+  .search-input {
+    width: 60px !important;
   }
 }
 
 @media screen and (max-width: 308px) {
+
+  /* reduce the font size for this really narrow width */
+  body { font-size: 0.75em !important; }
 
   /* hide actions in tweet footer ... */
   .tweet .stream-item-footer { display: none; }
@@ -466,9 +389,6 @@
 
   /* ... but show them when expanded */
   .opened-tweet .stream-item-footer { display: block; }
-
-  /* reduce the font size for this really narrow width */
-  body { font-size: 0.75em !important; }
 
   /* don't show avatar in stream (but show it on profiles) */
   .stream .avatar, .tweet .avatar, .dropdown-menu .avatar {
