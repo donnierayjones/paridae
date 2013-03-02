@@ -1,7 +1,5 @@
 $(function() {
 
-  var isMacOS = navigator.appVersion.indexOf("Mac") > 0;
-
   var linkSelector =
 
      // t.co is used for shortened links and twitter images
@@ -28,10 +26,8 @@ $(function() {
       action: 'saveDimensions',
       dimensions: {
 
-        // it appears that innerWidth/Height is accurate for Mac OS,
-        // while outerWidth/Height is accurate for Windows
-        width: isMacOS ? window.innerWidth : window.outerWidth,
-        height: isMacOS ? window.innerHeight : window.outerHeight,
+        width: window.innerWidth,
+        height: window.innerHeight,
 
         top: window.screenTop,
         left: window.screenLeft
