@@ -1,8 +1,10 @@
 $(function() {
 
+  var isMacOS = navigator.appVersion.indexOf("Mac") > 0;
+
   var linkSelector =
 
-     // t.co is used for shortened links and twitter images
+    // t.co is used for shortened links and twitter images
     'a[href^="http://t.co"], a[href^="https://t.co"],' +
 
     // settings link from menu dropdown
@@ -26,8 +28,10 @@ $(function() {
       action: 'saveDimensions',
       dimensions: {
 
-        width: window.innerWidth,
-        height: window.innerHeight,
+        // it appears that innerWidth/Height is accurate for Mac OS,
+        // while outerWidth/Height is accurate for Windows
+        width: isMacOS ? window.innerWidth : window.outerWidth,
+        height: isMacOS ? window.innerHeight : window.outerHeight,
 
         top: window.screenTop,
         left: window.screenLeft
@@ -63,7 +67,7 @@ $(function() {
   var keyHandlers = {
     // o
     '111': function() {
-      var $currentTweet = $('.hovered-stream-item, .js-had-hovered-stream-item');
+      var $currentTweet = $('.selected-stream-item');
       if($currentTweet.length > 0) {
         var $tweetText = $('.js-tweet-text', $currentTweet);
         var $links = $(linkSelector, $tweetText);
