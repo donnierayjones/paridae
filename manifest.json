@@ -1,6 +1,6 @@
 {
   "name": "Paridae",
-  "version": "0.7.15",
+  "version": "0.8.0",
   "manifest_version": 2,
   "description": "Make twitter.com more responsive (previously named Responsive Twitter)",
   "background": {
