@@ -29,7 +29,7 @@
   .bird-topbar-etched, .pushstate-spinner {
     margin-left: 0 !important;
     position: absolute !important;
-    left: 42% !important;
+    left: 38% !important;
     top: 3px !important;
   }
   .pushstate-spinner {
@@ -104,7 +104,9 @@
   .module, .module .flex-module, .stream-end-inner, .stream-loading,
   .permalink-inner, .modal-large .modal-content, .twttr-dialog-footer,
   #tweet_dialog, .twttr-dialog-container, .modal-content, .permalink,
-  .modal-header, .message, .selected-stream-item {
+  .modal-header, .message, .selected-stream-item,
+  .with-media-forward .cards-base .media-forward
+  {
     border-radius: 0 !important;
     -webkit-border-radius: 0 !important;
   }
@@ -257,12 +259,14 @@
   }
 }
 
-@media screen and (max-width: 440px) {
+@media screen and (max-width: 500px) {
   /* hide the bird */
   .bird-topbar-etched, .pushstate-spinner {
     display: none !important;
   }
+}
 
+@media screen and (max-width: 440px) {
   /* help make profile content fit */
   .profile-card.profile-header .profile-picture {
     margin-top: 10px !important;
@@ -270,12 +274,11 @@
   .profile-header .profile-card-inner {
     width: 95% !important;
   }
-}
 
-@media screen and (max-width: 408px) {
-
-  /* reduce the font size for this really narrow width */
-  body { font-size: 0.8em !important; }
+  /* fix padding on direct message icon */
+  .dm-nav {
+    padding: 0 5px;
+  }
 
   /* only show search and left nav */
   .topbar .pull-right .nav, .topbar-divider, .topbar-tweet-btn {
@@ -286,11 +289,19 @@
   .global-nav .search-input, .global-nav .search-input:focus, .global-nav
   .search-input.focus, .global-nav .highlight .search-input,
   .global-nav .dwrli .search-input {
-    width: 125px !important;
+    width: 150px !important;
   }
+}
 
-  .topbar .pull-right {
-    margin-right: 7px;
+@media screen and (max-width: 408px) {
+
+  /* reduce the font size for this really narrow width */
+  body { font-size: 0.8em !important; }
+
+  .global-nav .search-input, .global-nav .search-input:focus, .global-nav
+  .search-input.focus, .global-nav .highlight .search-input,
+  .global-nav .dwrli .search-input {
+    width: 110px !important;
   }
 
   /* move search dropdown back to the right and center */
@@ -361,7 +372,7 @@
   .global-nav .search-input, .global-nav .search-input:focus, .global-nav
   .search-input.focus, .global-nav .highlight .search-input, .global-nav .dwrli
   .search-input {
-    width: 100px !important;
+    width: 84px !important;
   }
 }
 
@@ -370,7 +381,7 @@
   .global-nav .search-input, .global-nav .search-input:focus, .global-nav
   .search-input.focus, .global-nav .highlight .search-input, .global-nav .dwrli
   .search-input {
-    width: 60px !important;
+    width: 44px !important;
   }
 }
 
