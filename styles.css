@@ -16,7 +16,7 @@
 
   /* fix padding for top of page (padding under topbar) */
   #page-container {
-    padding-top: 39px !important;
+    padding-top: 47px !important;
   }
 
   /* pad a little to help hide the text */
@@ -79,7 +79,7 @@
   /* fix header overlay */
   .profile-header-inner-overlay {
     bottom: 0 !important;
-    top: 60px !important;
+    top: 95px !important;
     width: 100% !important;
     height: 200px !important;
   }
@@ -100,12 +100,12 @@
   }
 
   /* rounded corners are so 90's */
-  .conent-main, .content-header .header-inner, .stream-items > *,
-  .module, .module .flex-module, .stream-end-inner, .stream-loading,
-  .permalink-inner, .modal-large .modal-content, .twttr-dialog-footer,
-  #tweet_dialog, .twttr-dialog-container, .modal-content, .permalink,
-  .modal-header, .message, .selected-stream-item,
-  .with-media-forward .cards-base .media-forward
+  .conent-main, .content-header .header-inner, .stream-items > *, .module,
+  .module .flex-module, .stream-end-inner, .stream-loading, .permalink-inner,
+  .modal-large .modal-content, .twttr-dialog-footer, #tweet_dialog,
+  .twttr-dialog-container, .modal-content, .permalink, .modal-header, .message,
+  .selected-stream-item, .with-media-forward .cards-base .media-forward,
+  .content-header, .content-no-header
   {
     border-radius: 0 !important;
     -webkit-border-radius: 0 !important;
