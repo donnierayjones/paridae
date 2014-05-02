@@ -71,6 +71,27 @@
     height: 100%;
   }
 
+  /* cards / multi-images */
+  .cards-media-container {
+    overflow: scroll;
+  }
+
+  /* fix gallery images */
+  .Gallery:before {
+    height: 20% !important;
+  }
+  .Gallery-content {
+    height: auto !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+  .Gallery-media img.media-image {
+    height: auto !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
   /* fix header background */
   .profile-card.profile-header .profile-header-inner {
     background-size: cover;
@@ -105,7 +126,7 @@
   .modal-large .modal-content, .twttr-dialog-footer, #tweet_dialog,
   .twttr-dialog-container, .modal-content, .permalink, .modal-header, .message,
   .selected-stream-item, .with-media-forward .cards-base .media-forward,
-  .content-header, .content-no-header
+  .content-header, .content-no-header, .GalleryTweet, .Gallery-media
   {
     border-radius: 0 !important;
     -webkit-border-radius: 0 !important;
