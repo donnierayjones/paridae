@@ -124,18 +124,36 @@
     top: 50%;
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
+    left: 0 !important;
   }
   .ProfileAvatar {
     margin: 0 auto;
+  }
+  .ProfileSidebar {
+    margin: 0 !important;
   }
 
   .AppContainer .u-size1of4, .AppContainer .u-size2of8, .AppContainer
   .u-size3of12, .AppContainer .u-size2of3, .AppContainer .u-size4of6,
   .AppContainer .u-size8of12, .AppContainer .u-size3of4, .AppContainer
-  .u-size6of8, .AppContainer .u-size9of12
+  .u-size6of8, .AppContainer .u-size9of12, .AppContainer .u-size1of2,
+  .AppContainer .u-size2of4, .AppContainer .u-size3of6, .AppContainer
+  .u-size4of8, .AppContainer .u-size5of10, .AppContainer .u-size6of12
   {
     width: 100% !important;
     float: none !important;
+  }
+
+  .Grid--withGutter {
+    margin: 0 !important;
+  }
+
+  .Grid--withGutter>.Grid-cell {
+    padding: 0 !important;
+  }
+
+  .GridTimeline .u-mb10 {
+    margin-bottom: 0 !important;
   }
 
   /* hide who to follow and trends */
