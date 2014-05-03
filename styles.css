@@ -138,7 +138,9 @@
   .AppContainer .u-size8of12, .AppContainer .u-size3of4, .AppContainer
   .u-size6of8, .AppContainer .u-size9of12, .AppContainer .u-size1of2,
   .AppContainer .u-size2of4, .AppContainer .u-size3of6, .AppContainer
-  .u-size4of8, .AppContainer .u-size5of10, .AppContainer .u-size6of12
+  .u-size4of8, .AppContainer .u-size5of10, .AppContainer .u-size6of12,
+  .AppContainer .u-size1of3, .AppContainer .u-size2of6, .AppContainer
+  .u-size4of12
   {
     width: 100% !important;
     float: none !important;
@@ -161,16 +163,14 @@
     display: none;
   }
 
+  /* hide photo rail */
+  .ProfilePhotoRail {
+    display: none !important;
+  }
+
   /* hide unimportant info */
   .ProfileCanopy-card {
     display: none;
-  }
-
-  .ProfileNav-item--more {
-    position: static;
-    background: #FFF;
-    width: 50%;
-    float: left;
   }
 
   .ProfileTweetbox .condensed .tweet-box {
@@ -180,16 +180,30 @@
   /* fix profile actions */
   .ProfileNav-item--userActions {
     position: static !important;
-    float: left !important;
-    width: 50% !important;
+    float: right;
+    width: 60%;
+    border-bottom: 1px solid #E1E8ED;
+    padding-left: 15px !important;
+    height: 61px !important;
   }
 
-  .ProfileNav-stat--moreLink {
-    padding: 7px 15px !important;
+  .ProfileNav-item--more {
+    float: right;
+    width: 40%;
+    background-color: #fff;
+    border-bottom: 1px solid #E1E8ED;
+    height: auto;
+  }
+  .ProfileNav-item--more .ProfileNav-label {
+    display: none;
   }
 
   .ProfileHeaderCard {
     margin-top: 75px !important;
+  }
+
+  .ProfileCard-bio {
+    height: auto !important;
   }
 
   /* media source icons need to be brought back to 16px */
@@ -209,7 +223,7 @@
   .twttr-dialog-container, .modal-content, .permalink, .modal-header, .message,
   .selected-stream-item, .with-media-forward .cards-base .media-forward,
   .content-header, .content-no-header, .GalleryTweet, .Gallery-media,
-  .ProfileTweet, .ProfileTweetbox {
+  .ProfileTweet, .ProfileTweetbox, .ProfileCard, .ProfileCard-bg {
     border-radius: 0 !important;
     -webkit-border-radius: 0 !important;
   }
