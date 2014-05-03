@@ -92,7 +92,7 @@
     width: 100% !important;
   }
 
-  /* fix header background */
+  /* fix header background (old profile style) */
   .profile-card.profile-header .profile-header-inner {
     background-size: cover;
     background-position: center;
@@ -108,6 +108,70 @@
   /* fix profile image overlay settings dropdown */
   .profile-card.profile-header .profile-picture {
     z-index: 4 !important;
+  }
+
+  /* fix header background */
+  .ProfileCanopy-header {
+    background-position-y: 0 !important;
+    background-size: cover !important;
+    background-position: center !important;
+  }
+
+  /* fix profile avatar */
+  .ProfileCanopy-avatar {
+    position: relative !important;
+    bottom: inherit;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+  .ProfileAvatar {
+    margin: 0 auto;
+  }
+
+  .AppContainer .u-size1of4, .AppContainer .u-size2of8, .AppContainer
+  .u-size3of12, .AppContainer .u-size2of3, .AppContainer .u-size4of6,
+  .AppContainer .u-size8of12, .AppContainer .u-size3of4, .AppContainer
+  .u-size6of8, .AppContainer .u-size9of12
+  {
+    width: 100% !important;
+    float: none !important;
+  }
+
+  /* hide who to follow and trends */
+  .ProfileWTFAndTrends {
+    display: none;
+  }
+
+  /* hide unimportant info */
+  .ProfileCanopy-card {
+    display: none;
+  }
+
+  .ProfileNav-item--more {
+    position: static;
+    background: #FFF;
+    width: 50%;
+    float: left;
+  }
+
+  .ProfileTweetbox .condensed .tweet-box {
+    padding-right: 0 !important;
+  }
+
+  /* fix profile actions */
+  .ProfileNav-item--userActions {
+    position: static !important;
+    float: left !important;
+    width: 50% !important;
+  }
+
+  .ProfileNav-stat--moreLink {
+    padding: 7px 15px !important;
+  }
+
+  .ProfileHeaderCard {
+    margin-top: 75px !important;
   }
 
   /* media source icons need to be brought back to 16px */
@@ -126,8 +190,8 @@
   .modal-large .modal-content, .twttr-dialog-footer, #tweet_dialog,
   .twttr-dialog-container, .modal-content, .permalink, .modal-header, .message,
   .selected-stream-item, .with-media-forward .cards-base .media-forward,
-  .content-header, .content-no-header, .GalleryTweet, .Gallery-media
-  {
+  .content-header, .content-no-header, .GalleryTweet, .Gallery-media,
+  .ProfileTweet, .ProfileTweetbox {
     border-radius: 0 !important;
     -webkit-border-radius: 0 !important;
   }
