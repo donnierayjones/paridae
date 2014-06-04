@@ -1,7 +1,7 @@
 {
   "name": "Paridae",
   "short_name": "Paridae",
-  "version": "0.8.4",
+  "version": "0.8.5",
   "manifest_version": 2,
   "description": "Make twitter.com more responsive (previously named Responsive Twitter)",
   "background": {
@@ -22,8 +22,5 @@
   "omnibox": { "keyword" : "@" },
   "browser_action": {
     "default_icon": "icon48.png"
-  },
-  "permissions": [
-    "tabs"
-  ]
+  }
 }
