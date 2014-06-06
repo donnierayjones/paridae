@@ -1,6 +1,6 @@
-# Make Twitter Responsive
+# Paridae - Make Twitter Responsive
 
-![promo](http://f.cl.ly/items/3b012S1K060E3I3V3K0j/responsive-twitter-440.png)
+![promo](http://f.cl.ly/items/2K0R3I3p0s0v0k0G2C3X/paridae-promo.png)
 
 ## Features
 
@@ -22,14 +22,14 @@
 
 ### Omnibox
 
-![omnibox](http://f.cl.ly/items/1z0V2Y1U2U361I0g0a2G/omnibox.png)
+![omnibox](http://cl.ly/Vw4Q/screenshot-omnicomplete.png)
 
 ### Responsive Windows
-![screenshot](http://f.cl.ly/items/461A2S0u1L0O0b1T022a/chrome-screen-large.png)
+![screenshot](http://f.cl.ly/items/111Q0I2V2t2E2O1C092X/chrome-screenshot.png)
 
 ### Responsive Twitter Icon
 
-![icon](http://f.cl.ly/items/0l0a36001T1t1Y2t2q1I/Screen%20Shot%202012-08-11%20at%203.22.31%20PM.png)
+![icon](http://f.cl.ly/items/2w071Z1U0v0Q2r0W3q3Z/icon-screenshot.png)
 
 ## Installation
 
