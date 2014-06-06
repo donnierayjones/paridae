@@ -29,7 +29,7 @@
   .bird-topbar-etched, .pushstate-spinner {
     margin-left: 0 !important;
     position: absolute !important;
-    left: 38% !important;
+    left: 40% !important;
     top: 3px !important;
   }
   .pushstate-spinner {
@@ -178,24 +178,28 @@
   }
 
   /* fix profile actions */
-  .ProfileNav-item--userActions {
-    position: static !important;
-    float: right;
-    width: 60%;
-    border-bottom: 1px solid #E1E8ED;
-    padding-left: 15px !important;
-    height: 61px !important;
-  }
-
-  .ProfileNav-item--more {
-    float: right;
-    width: 40%;
+  .ProfileCanopy-navBar .AppContainer {
     background-color: #fff;
     border-bottom: 1px solid #E1E8ED;
-    height: auto;
   }
-  .ProfileNav-item--more .ProfileNav-label {
-    display: none;
+  .ProfileNav-item {
+    width: 16.666667%;
+  }
+  .ProfileNav-item a {
+    text-align: center;
+  }
+  .ProfileNav-item--userActions {
+    position: static !important;
+    padding-left: 15px !important;
+    height: 61px !important;
+    width: 100% !important;
+  }
+  .ProfileNav-item--userActions .UserActions {
+    text-align: right !important;
+  }
+  /* always display all nav items */
+  .ProfileNav .is-hidden {
+    display: inline-block !important;
   }
 
   .ProfileHeaderCard {
@@ -292,17 +296,17 @@
     width: 100% !important;
     box-sizing: border-box !important;
   }
-
-  /* squeeze in the nav, removing the text */
-  .topbar > .nav > li > a {
-    padding-left: 10px !important;
-    width: 20px !important;
-    white-space: nowrap !important;
-    overflow:hidden !important;
-  }
 }
 
 @media screen and (max-width: 575px) {
+  /* shrink nav to 5 cells */
+  .ProfileNav-item {
+    width: 20% !important;
+  }
+  .ProfileNav-item--userActions {
+    width: 80% !important;
+  }
+
   /* profile modal fixes */
   .profile-card .fullname {
     font-size: 1.5em !important;
@@ -339,6 +343,13 @@
 }
 
 @media screen and (max-width: 520px) {
+  /* shrink nav to 4 cells */
+  .ProfileNav-item {
+    width: 25% !important;
+  }
+  .ProfileNav-item--userActions {
+    width: 50% !important;
+  }
   /* newer modal windows have width of 520px. */
   .modal {
     width: 100% !important;
@@ -346,6 +357,23 @@
   .tweet-form .tweet-box {
     width: 95% !important;
     height: auto !important;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  /* hide the bird */
+  .bird-topbar-etched, .pushstate-spinner {
+    display: none !important;
+  }
+}
+
+
+@media screen and (max-width: 460px) {
+  .topbar .nav > li > a {
+    padding: 0 10px 0 4px;
+  }
+  .topbar .nav > li .Icon {
+    margin: 11px 0 0 4px;
   }
 }
 
@@ -374,16 +402,11 @@
   .expanded-content {
     clear: right;
   }
-}
 
-@media screen and (max-width: 500px) {
-  /* hide the bird */
-  .bird-topbar-etched, .pushstate-spinner {
-    display: none !important;
-  }
 }
 
 @media screen and (max-width: 440px) {
+
   /* help make profile content fit */
   .profile-card.profile-header .profile-picture {
     margin-top: 10px !important;
@@ -398,8 +421,17 @@
   }
 
   /* only show search and left nav */
-  .topbar .pull-right .nav, .topbar-divider, .topbar-tweet-btn {
+  .topbar .pull-right .nav li {
     display: none !important;
+  }
+  .topbar .pull-right .nav .topbar-tweet-btn {
+    display: inline-block !important;
+  }
+
+  /* move search dropdown back to the right and center */
+  .form-search .dropdown-menu {
+    left: -245px !important;
+    width: 285px !important;
   }
 
   /* enlarge search */
@@ -410,21 +442,32 @@
   }
 }
 
+@media screen and (max-width: 420px) {
+  .topbar .nav > li > a {
+    padding: 0 6px 0 4px;
+  }
+  .topbar .nav > li .Icon {
+    margin: 11px 0 0 2px;
+  }
+}
+
 @media screen and (max-width: 408px) {
 
   /* reduce the font size for this really narrow width */
   body { font-size: 0.8em !important; }
 
+  /* shrink nav to 3 cells */
+  .ProfileNav-item {
+    width: 33.333333% !important;
+  }
+  .ProfileNav-item--userActions {
+    width: 100% !important;
+  }
+
   .global-nav .search-input, .global-nav .search-input:focus, .global-nav
   .search-input.focus, .global-nav .highlight .search-input,
   .global-nav .dwrli .search-input {
     width: 110px !important;
-  }
-
-  /* move search dropdown back to the right and center */
-  .form-search .dropdown-menu {
-    left: -295px !important;
-    width: 285px !important;
   }
 
   /* hide caret because it's hard to align properly */
@@ -489,16 +532,29 @@
   .global-nav .search-input, .global-nav .search-input:focus, .global-nav
   .search-input.focus, .global-nav .highlight .search-input, .global-nav .dwrli
   .search-input {
-    width: 84px !important;
+    width: 74px !important;
   }
 }
 
 @media screen and (max-width: 335px) {
+
+  .topbar .nav > li > a {
+    padding: 0 7px 0 4px;
+  }
+  .topbar .nav > li .Icon {
+    margin: 11px 0 0 2px;
+  }
+
   /* shrink search */
   .global-nav .search-input, .global-nav .search-input:focus, .global-nav
   .search-input.focus, .global-nav .highlight .search-input, .global-nav .dwrli
   .search-input {
     width: 44px !important;
+  }
+
+  .form-search .dropdown-menu {
+    left: -190px !important;
+    width: 245px !important;
   }
 }
 
