@@ -449,6 +449,10 @@
   .topbar .nav > li .Icon {
     margin: 11px 0 0 2px;
   }
+
+  .global-nav .people.notifications .count {
+    left: 13px !important;
+  }
 }
 
 @media screen and (max-width: 408px) {
